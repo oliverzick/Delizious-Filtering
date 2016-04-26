@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="Match.cs" company="Oliver Zick">
+// // <copyright file="Any.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -20,17 +20,11 @@
 
 namespace Delizious.Filtering
 {
-    public static class Match
+    internal sealed class Any<T> : IMatch<T>
     {
-        public static Match<T> Same<T>(T reference)
-            where T : class
+        public bool Matches(T value)
         {
-            return Match<T>.Create(new Same<T>(reference));
-        }
-
-        public static Match<T> Any<T>()
-        {
-            return Match<T>.Create(new Any<T>());
+            return true;
         }
     }
 }

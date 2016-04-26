@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="Match.cs" company="Oliver Zick">
+// // <copyright file="AnyTests.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -20,17 +20,21 @@
 
 namespace Delizious.Filtering
 {
-    public static class Match
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
+    public sealed class AnyTests
     {
-        public static Match<T> Same<T>(T reference)
-            where T : class
+        [TestMethod]
+        public void Match__With_Null__Should_Return_True()
         {
-            return Match<T>.Create(new Same<T>(reference));
+            Assert.IsTrue(Match.Any<GenericParameterHelper>().Matches(null));
         }
 
-        public static Match<T> Any<T>()
+        [TestMethod]
+        public void Match__With_An_Instance__Should_Return_True()
         {
-            return Match<T>.Create(new Any<T>());
+            Assert.IsTrue(Match.Any<GenericParameterHelper>().Matches(new GenericParameterHelper()));
         }
     }
 }
