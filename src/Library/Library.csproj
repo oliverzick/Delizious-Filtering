@@ -41,6 +41,7 @@
     <Compile Include="Equal.cs" />
     <Compile Include="GreaterThan.cs" />
     <Compile Include="IMatch.cs" />
+    <Compile Include="LessThan.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Match.T.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
