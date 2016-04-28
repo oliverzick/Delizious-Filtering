@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="Any.cs" />
     <Compile Include="Equal.cs" />
+    <Compile Include="GreaterThan.cs" />
     <Compile Include="IMatch.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Match.T.cs" />

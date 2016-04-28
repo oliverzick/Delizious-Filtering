@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="Match.cs" company="Oliver Zick">
+// // <copyright file="GreaterThanTests.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -21,34 +21,34 @@
 namespace Delizious.Filtering
 {
     using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    public static class Match
+    [TestClass]
+    public sealed class GreaterThanTests
     {
-        public static Match<T> Same<T>(T reference)
-            where T : class
+        [TestMethod]
+        public void Match_Instance__With_Greater_Instance__Should_Return_True()
         {
-            return Match<T>.Create(new Same<T>(reference));
+            Assert.IsTrue(Match.GreaterThan(0).Matches(1));
         }
 
-        public static Match<T> Equal<T>(T reference)
+        [TestMethod]
+        public void Match_Instance__With_Equal_Instance__Should_Return_False()
         {
-            return Match<T>.Create(new Equal<T>(reference));
+            Assert.IsFalse(Match.GreaterThan(0).Matches(0));
         }
 
-        public static Match<T> Any<T>()
+        [TestMethod]
+        public void Match_Instance__With_Less_Instance__Should_Return_False()
         {
-            return Match<T>.Create(new Any<T>());
+            Assert.IsFalse(Match.GreaterThan(0).Matches(-1));
         }
 
-        public static Match<T> GreaterThan<T>(T reference)
-            where T : IComparable<T>
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Match_Null__Should_Throw_Exception()
         {
-            if (ReferenceEquals(reference, null))
-            {
-                throw new ArgumentNullException(nameof(reference));
-            }
-
-            return Match<T>.Create(new GreaterThan<T>(reference));
+            Match.GreaterThan<string>(null);
         }
     }
 }

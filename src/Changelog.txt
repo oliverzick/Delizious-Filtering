@@ -6,3 +6,4 @@ Version 1.0.0:
 	- Issue #1: Enable matching instances of reference types to be same
 	- Issue #2: Enable matching an instance to be any
 	- Issue #3: Enable matching an instance to be equal
+	- Issue #4: Enable matching an instance to be greater than another instance

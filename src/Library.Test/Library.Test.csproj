@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AnyTests.cs" />
     <Compile Include="EqualTests.cs" />
+    <Compile Include="GreaterThanTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SameTests.cs" />
   </ItemGroup>

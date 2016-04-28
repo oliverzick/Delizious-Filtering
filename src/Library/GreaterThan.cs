@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="Match.cs" company="Oliver Zick">
+// // <copyright file="GreaterThan.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -22,33 +22,19 @@ namespace Delizious.Filtering
 {
     using System;
 
-    public static class Match
+    internal sealed class GreaterThan<T> : IMatch<T>
+        where T : IComparable<T>
     {
-        public static Match<T> Same<T>(T reference)
-            where T : class
+        private readonly T reference;
+
+        public GreaterThan(T reference)
         {
-            return Match<T>.Create(new Same<T>(reference));
+            this.reference = reference;
         }
 
-        public static Match<T> Equal<T>(T reference)
+        public bool Matches(T value)
         {
-            return Match<T>.Create(new Equal<T>(reference));
-        }
-
-        public static Match<T> Any<T>()
-        {
-            return Match<T>.Create(new Any<T>());
-        }
-
-        public static Match<T> GreaterThan<T>(T reference)
-            where T : IComparable<T>
-        {
-            if (ReferenceEquals(reference, null))
-            {
-                throw new ArgumentNullException(nameof(reference));
-            }
-
-            return Match<T>.Create(new GreaterThan<T>(reference));
+            return this.reference.CompareTo(value) < 0;
         }
     }
 }
