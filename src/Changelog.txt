@@ -8,3 +8,4 @@ Version 1.0.0:
 	- Issue #3: Enable matching an instance to be equal
 	- Issue #4: Enable matching an instance to be greater than another instance
 	- Issue #5: Enable matching an instance to be less than another instance
+	- Issue #6: Enable matching an instance to be null
