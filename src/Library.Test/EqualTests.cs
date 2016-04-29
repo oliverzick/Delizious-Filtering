@@ -20,21 +20,17 @@
 
 namespace Delizious.Filtering
 {
+    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public sealed class EqualTests
     {
         [TestMethod]
-        public void Reference_Type__Match_Null__With_Null__Should_Return_True()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Match_Null__Should_Throw_Exception()
         {
-            Assert.IsTrue(Match.Equal<object>(null).Matches(null));
-        }
-
-        [TestMethod]
-        public void Reference_Type__Match_Null__With_Instance__Should_Return_False()
-        {
-            Assert.IsFalse(Match.Equal<object>(null).Matches(new object()));
+            Match.Equal<GenericParameterHelper>(null);
         }
 
         [TestMethod]
@@ -55,18 +51,6 @@ namespace Delizious.Filtering
         public void Reference_Type__Match_Instance__With_Different_Instance__Should_Return_False()
         {
             Assert.IsFalse(Match.Equal(new object()).Matches(new object()));
-        }
-
-        [TestMethod]
-        public void Reference_Type_With_Value_Semantics__Match_Null__With_Null__Should_Return_True()
-        {
-            Assert.IsTrue(Match.Equal<GenericParameterHelper>(null).Matches(null));
-        }
-
-        [TestMethod]
-        public void Reference_Type_With_Value_Semantics__Match_Null__With_Instance__Should_Return_False()
-        {
-            Assert.IsFalse(Match.Equal<GenericParameterHelper>(null).Matches(new GenericParameterHelper()));
         }
 
         [TestMethod]

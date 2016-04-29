@@ -20,21 +20,17 @@
 
 namespace Delizious.Filtering
 {
+    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public sealed class SameTests
     {
         [TestMethod]
-        public void Match_Null__With_Null__Should_Return_True()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Match_Null__Should_Throw_Exception()
         {
-            Assert.IsTrue(Match.Same<GenericParameterHelper>(null).Matches(null));
-        }
-
-        [TestMethod]
-        public void Match_Null__With_An_Instance__Should_Return_False()
-        {
-            Assert.IsFalse(Match.Same<GenericParameterHelper>(null).Matches(new GenericParameterHelper()));
+            Match.Same<GenericParameterHelper>(null);
         }
 
         [TestMethod]

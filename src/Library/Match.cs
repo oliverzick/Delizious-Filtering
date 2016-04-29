@@ -24,6 +24,11 @@ namespace Delizious.Filtering
 
     public static class Match
     {
+        public static Match<T> Any<T>()
+        {
+            return Match<T>.Create(new Any<T>());
+        }
+
         public static Match<T> Null<T>()
             where T : class
         {
@@ -33,17 +38,22 @@ namespace Delizious.Filtering
         public static Match<T> Same<T>(T reference)
             where T : class
         {
+            if (ReferenceEquals(reference, null))
+            {
+                throw new ArgumentNullException(nameof(reference), "When matching an instance to be a null reference use Match.Null<T>() instead.");
+            }
+
             return Match<T>.Create(new Same<T>(reference));
         }
 
         public static Match<T> Equal<T>(T reference)
         {
-            return Match<T>.Create(new Equal<T>(reference));
-        }
+            if (ReferenceEquals(reference, null))
+            {
+                throw new ArgumentNullException(nameof(reference), "When matching an instance to be a null reference use Match.Null<T>() instead.");
+            }
 
-        public static Match<T> Any<T>()
-        {
-            return Match<T>.Create(new Any<T>());
+            return Match<T>.Create(new Equal<T>(reference));
         }
 
         public static Match<T> GreaterThan<T>(T reference)
