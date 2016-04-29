@@ -31,7 +31,7 @@ namespace Delizious.Filtering
 
         public bool Matches(T value)
         {
-            return Equals(value, this.reference);
+            return this.reference.Equals(value);
         }
     }
 }
