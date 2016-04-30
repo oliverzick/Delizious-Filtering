@@ -58,6 +58,7 @@
     <Compile Include="EqualTests.cs" />
     <Compile Include="GreaterThanTests.cs" />
     <Compile Include="LessThanTests.cs" />
+    <Compile Include="NeverTests.cs" />
     <Compile Include="NullTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SameTests.cs" />

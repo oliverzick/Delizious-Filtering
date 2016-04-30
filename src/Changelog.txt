@@ -10,3 +10,4 @@ Version 1.0.0:
 	- Issue #5: Enable matching an instance to be less than another instance
 	- Issue #6: Enable matching an instance to be null
 	- Issue #7: Enable matching always
+	- Issue #8: Enable matching never
