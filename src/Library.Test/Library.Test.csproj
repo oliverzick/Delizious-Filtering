@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AlwaysTests.cs" />
     <Compile Include="AnyTests.cs" />
     <Compile Include="EqualTests.cs" />
     <Compile Include="GreaterThanTests.cs" />

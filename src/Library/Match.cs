@@ -24,6 +24,11 @@ namespace Delizious.Filtering
 
     public static class Match
     {
+        public static Match<T> Always<T>()
+        {
+            return Match<T>.Create(new Always<T>());
+        }
+
         public static Match<T> Any<T>()
         {
             return Match<T>.Create(new Any<T>());
