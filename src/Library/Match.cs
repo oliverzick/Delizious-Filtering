@@ -21,6 +21,7 @@
 namespace Delizious.Filtering
 {
     using System;
+    using System.Linq;
 
     public static class Match
     {
@@ -32,11 +33,6 @@ namespace Delizious.Filtering
         public static Match<T> Never<T>()
         {
             return Match<T>.Create(new Never<T>());
-        }
-
-        public static Match<T> Any<T>()
-        {
-            return Match<T>.Create(new Any<T>());
         }
 
         public static Match<T> Null<T>()
@@ -108,6 +104,21 @@ namespace Delizious.Filtering
             }
 
             return Match<T>.Create(new LessThanOrEqualTo<T>(reference));
+        }
+
+        public static Match<T> Any<T>(params Match<T>[] matches)
+        {
+            if (ReferenceEquals(matches, null))
+            {
+                throw new ArgumentNullException(nameof(matches));
+            }
+
+            if (matches.Any(match => ReferenceEquals(match, null)))
+            {
+                throw new ArgumentException("At least one match is a null reference.", nameof(matches));
+            }
+
+            return Match<T>.Any(matches);
         }
     }
 }

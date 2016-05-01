@@ -20,6 +20,8 @@
 
 namespace Delizious.Filtering
 {
+    using System.Linq;
+
     public sealed class Match<T> : IMatch<T>
     {
         private readonly IMatch<T> match;
@@ -32,6 +34,11 @@ namespace Delizious.Filtering
         internal static Match<T> Create(IMatch<T> match)
         {
             return new Match<T>(match);
+        }
+
+        internal static Match<T> Any(params Match<T>[] matches)
+        {
+            return Create(new Any<T>(matches.Select(match => match.match).ToArray()));
         }
 
         public bool Matches(T value)

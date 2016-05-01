@@ -20,21 +20,46 @@
 
 namespace Delizious.Filtering
 {
+    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public sealed class AnyTests
     {
         [TestMethod]
-        public void Match__With_Null__Should_Return_True()
+        public void Match_Should_Return_False__When_No_Matches_Are_Given()
         {
-            Assert.IsTrue(Match.Any<GenericParameterHelper>().Matches(null));
+            Assert.IsFalse(Match.Any<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Match__With_An_Instance__Should_Return_True()
+        public void Match_Should_Return_False__When_All_Matches_Do_Not_Match_Successfully()
         {
-            Assert.IsTrue(Match.Any<GenericParameterHelper>().Matches(new GenericParameterHelper()));
+            Assert.IsFalse(Match.Any(Match.Never<GenericParameterHelper>(),
+                                     Match.Never<GenericParameterHelper>(),
+                                     Match.Never<GenericParameterHelper>()).Matches(null));
+        }
+
+        [TestMethod]
+        public void Match_Should_Return_True__When_At_Least_One_Match_Matches_Successfully()
+        {
+            Assert.IsTrue(Match.Any(Match.Never<GenericParameterHelper>(),
+                                    Match.Always<GenericParameterHelper>(),
+                                    Match.Never<GenericParameterHelper>()).Matches(null));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Should_Throw_Exception__When_Matches_Are_Null()
+        {
+            Match.Any<GenericParameterHelper>(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Should_Throw_Exception__When_Matches_Contain_At_Least_One_Null_Reference()
+        {
+            Match.Any(Match.Always<GenericParameterHelper>(), null);
         }
     }
 }

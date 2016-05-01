@@ -20,11 +20,20 @@
 
 namespace Delizious.Filtering
 {
+    using System.Linq;
+
     internal sealed class Any<T> : IMatch<T>
     {
+        private readonly IMatch<T>[] matches;
+
+        public Any(IMatch<T>[] matches)
+        {
+            this.matches = matches;
+        }
+
         public bool Matches(T value)
         {
-            return true;
+            return this.matches.Any(match => match.Matches(value));
         }
     }
 }
