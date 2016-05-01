@@ -27,13 +27,13 @@ namespace Delizious.Filtering
     public sealed class AnyTests
     {
         [TestMethod]
-        public void Match_Should_Return_False__When_No_Matches_Are_Given()
+        public void Fail__When_No_Matches_Are_Given()
         {
             Assert.IsFalse(Match.Any<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Match_Should_Return_False__When_All_Matches_Do_Not_Match_Successfully()
+        public void Fail__When_All_Matches_Do_Not_Match_Successfully()
         {
             Assert.IsFalse(Match.Any(Match.Never<GenericParameterHelper>(),
                                      Match.Never<GenericParameterHelper>(),
@@ -41,7 +41,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Match_Should_Return_True__When_At_Least_One_Match_Matches_Successfully()
+        public void Succeed__When_At_Least_One_Match_Matches_Successfully()
         {
             Assert.IsTrue(Match.Any(Match.Never<GenericParameterHelper>(),
                                     Match.Always<GenericParameterHelper>(),
@@ -50,14 +50,14 @@ namespace Delizious.Filtering
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Should_Throw_Exception__When_Matches_Are_Null()
+        public void Throw_Exception__When_Matches_Are_Null()
         {
             Match.Any<GenericParameterHelper>(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void Should_Throw_Exception__When_Matches_Contain_At_Least_One_Null_Reference()
+        public void Throw_Exception__When_Matches_Contain_At_Least_One_Null_Reference()
         {
             Match.Any(Match.Always<GenericParameterHelper>(), null);
         }

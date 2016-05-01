@@ -27,30 +27,30 @@ namespace Delizious.Filtering
     public sealed class SameTests
     {
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Match_Null__Should_Throw_Exception()
-        {
-            Match.Same<GenericParameterHelper>(null);
-        }
-
-        [TestMethod]
-        public void Match_An_Instance__With_Null__Should_Return_False()
+        public void Fail__When_Reference_Is_An_Instance_And_Value_Is_Null()
         {
             Assert.IsFalse(Match.Same(new GenericParameterHelper()).Matches(null));
         }
 
         [TestMethod]
-        public void Match_An_Instance__With_Different_Instance__Should_Return_False()
+        public void Fail__When_Reference_And_Value_Are_Not_Same()
         {
             Assert.IsFalse(Match.Same(new GenericParameterHelper()).Matches(new GenericParameterHelper()));
         }
 
         [TestMethod]
-        public void Match_An_Instance__With_Same_Instance__Should_Return_True()
+        public void Succeed__When_Reference_And_Value_Are_Same()
         {
             var obj = new GenericParameterHelper();
 
             Assert.IsTrue(Match.Same(obj).Matches(obj));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Throw_Exception__When_Reference_Is_Null()
+        {
+            Match.Same<GenericParameterHelper>(null);
         }
     }
 }
