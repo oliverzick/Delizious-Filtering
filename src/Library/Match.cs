@@ -77,6 +77,17 @@ namespace Delizious.Filtering
             return Match<T>.Create(new GreaterThan<T>(reference));
         }
 
+        public static Match<T> GreaterThanOrEqualTo<T>(T reference)
+            where T : IComparable<T>
+        {
+            if (ReferenceEquals(reference, null))
+            {
+                throw new ArgumentNullException(nameof(reference));
+            }
+
+            return Match<T>.Create(new GreaterThanOrEqualTo<T>(reference));
+        }
+
         public static Match<T> LessThan<T>(T reference)
             where T : IComparable<T>
         {
