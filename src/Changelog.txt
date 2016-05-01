@@ -12,3 +12,4 @@ Version 1.0.0:
 	- Issue #7: Enable matching always
 	- Issue #8: Enable matching never
 	- Issue #9: Enable matching an instance to be greater than or equal to another instance
+	- Issue #10: Enable matching an instance to be less than or equal to another instance

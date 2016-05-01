@@ -98,5 +98,16 @@ namespace Delizious.Filtering
 
             return Match<T>.Create(new LessThan<T>(reference));
         }
+
+        public static Match<T> LessThanOrEqualTo<T>(T reference)
+            where T : IComparable<T>
+        {
+            if (ReferenceEquals(reference, null))
+            {
+                throw new ArgumentNullException(nameof(reference));
+            }
+
+            return Match<T>.Create(new LessThanOrEqualTo<T>(reference));
+        }
     }
 }
