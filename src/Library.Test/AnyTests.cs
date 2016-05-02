@@ -33,7 +33,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Fail__When_All_Matches_Do_Not_Match_Successfully()
+        public void Fail__When_All_Matches_Fail()
         {
             Assert.IsFalse(Match.Any(Match.Never<GenericParameterHelper>(),
                                      Match.Never<GenericParameterHelper>(),
@@ -41,7 +41,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Succeed__When_At_Least_One_Match_Matches_Successfully()
+        public void Succeed__When_At_Least_One_Match_Succeeds()
         {
             Assert.IsTrue(Match.Any(Match.Never<GenericParameterHelper>(),
                                     Match.Always<GenericParameterHelper>(),

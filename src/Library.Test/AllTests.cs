@@ -33,7 +33,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Succeed__When_All_Matches_Match_Successfully()
+        public void Succeed__When_All_Matches_Succeed()
         {
             Assert.IsTrue(Match.All(Match.Always<GenericParameterHelper>(),
                                     Match.Always<GenericParameterHelper>(),
