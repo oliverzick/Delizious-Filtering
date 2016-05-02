@@ -3,14 +3,14 @@ Copyright © 2016 Oliver Zick. All rights reserved.
 
 Version 1.0.0:
 
-	- Issue #1: Enable matching instances of reference types to be same
-	- Issue #2: Enable matching an instance to be any
-	- Issue #3: Enable matching an instance to be equal
-	- Issue #4: Enable matching an instance to be greater than another instance
-	- Issue #5: Enable matching an instance to be less than another instance
-	- Issue #6: Enable matching an instance to be null
-	- Issue #7: Enable matching always
-	- Issue #8: Enable matching never
-	- Issue #9: Enable matching an instance to be greater than or equal to another instance
-	- Issue #10: Enable matching an instance to be less than or equal to another instance
+	- Issue #1: Enable match that determines whether an instance is same as a given instance
+	- Issue #2: Enable match that determines whether an instance matches any given match
+	- Issue #3: Enable match that determines whether an instance equals a given instance
+	- Issue #4: Enable match that determines whether an instance is greater than a given instance
+	- Issue #5: Enable match that determines whether an instance is less than a given instance
+	- Issue #6: Enable match that determines whether an instance is null
+	- Issue #7: Enable match that matches always
+	- Issue #8: Enable match that matches never
+	- Issue #9: Enable match that determines whether an instance is greater than or equal to a given instance
+	- Issue #10: Enable match that determines whether an instance is less than or equal to a given instance
 	- Issue #12: Enable match that determines whether an instance matches all given matches
