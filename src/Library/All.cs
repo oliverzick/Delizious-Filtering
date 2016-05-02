@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="Match.T.cs" company="Oliver Zick">
+// // <copyright file="All.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -22,33 +22,18 @@ namespace Delizious.Filtering
 {
     using System.Linq;
 
-    public sealed class Match<T> : IMatch<T>
+    internal sealed class All<T> : IMatch<T>
     {
-        private readonly IMatch<T> match;
+        private readonly IMatch<T>[] matches;
 
-        private Match(IMatch<T> match)
+        public All(IMatch<T>[] matches)
         {
-            this.match = match;
-        }
-
-        internal static Match<T> Create(IMatch<T> match)
-        {
-            return new Match<T>(match);
-        }
-
-        internal static Match<T> All(params Match<T>[] matches)
-        {
-            return Create(new All<T>(matches.Select(match => match.match).ToArray()));
-        }
-
-        internal static Match<T> Any(params Match<T>[] matches)
-        {
-            return Create(new Any<T>(matches.Select(match => match.match).ToArray()));
+            this.matches = matches;
         }
 
         public bool Matches(T value)
         {
-            return this.match.Matches(value);
+            return this.matches.All(match => match.Matches(value));
         }
     }
 }

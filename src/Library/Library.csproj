@@ -37,6 +37,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="All.cs" />
     <Compile Include="Always.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Equal.cs" />
