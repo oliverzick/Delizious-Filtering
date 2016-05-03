@@ -41,6 +41,12 @@ namespace Delizious.Filtering
             return Match<T>.Create(new Null<T>());
         }
 
+        public static Match<T> NotNull<T>()
+            where T : class
+        {
+            return Match<T>.Create(new NotNull<T>());
+        }
+
         public static Match<T> Same<T>(T reference)
             where T : class
         {

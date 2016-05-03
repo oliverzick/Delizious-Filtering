@@ -49,6 +49,7 @@
     <Compile Include="Match.cs" />
     <Compile Include="Match.T.cs" />
     <Compile Include="Never.cs" />
+    <Compile Include="NotNull.cs" />
     <Compile Include="Null.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Same.cs" />

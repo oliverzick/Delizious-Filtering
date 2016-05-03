@@ -14,3 +14,4 @@ Version 1.0.0:
 	- Issue #9: Enable match that determines whether an instance is greater than or equal to a given instance
 	- Issue #10: Enable match that determines whether an instance is less than or equal to a given instance
 	- Issue #12: Enable match that determines whether an instance matches all given matches
+	- Issue #13: Enable match that determines whether an instance is not null
