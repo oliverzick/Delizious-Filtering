@@ -49,6 +49,7 @@
     <Compile Include="Match.cs" />
     <Compile Include="Match.T.cs" />
     <Compile Include="Never.cs" />
+    <Compile Include="NotEqual.cs" />
     <Compile Include="NotNull.cs" />
     <Compile Include="NotSame.cs" />
     <Compile Include="Null.cs" />

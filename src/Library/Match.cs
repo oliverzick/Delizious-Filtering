@@ -79,6 +79,16 @@ namespace Delizious.Filtering
             return Match<T>.Create(new Equal<T>(reference));
         }
 
+        public static Match<T> NotEqual<T>(T reference)
+        {
+            if (ReferenceEquals(reference, null))
+            {
+                throw new ArgumentNullException(nameof(reference), "When matching an instance to not be a null reference use Match.NotNull<T>() instead.");
+            }
+
+            return Match<T>.Create(new NotEqual<T>(reference));
+        }
+
         public static Match<T> GreaterThan<T>(T reference)
             where T : IComparable<T>
         {

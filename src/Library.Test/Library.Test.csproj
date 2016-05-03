@@ -62,6 +62,7 @@
     <Compile Include="LessThanOrEqualToTests.cs" />
     <Compile Include="LessThanTests.cs" />
     <Compile Include="NeverTests.cs" />
+    <Compile Include="NotEqualTests.cs" />
     <Compile Include="NotNullTests.cs" />
     <Compile Include="NotSameTests.cs" />
     <Compile Include="NullTests.cs" />

@@ -16,3 +16,4 @@ Version 1.0.0:
 	- Issue #12: Enable match that determines whether an instance matches all given matches
 	- Issue #13: Enable match that determines whether an instance is not null
 	- Issue #14: Enable match that determines whether an instance is not same as a given instance
+	- Issue #15: Enable match that determines whether an instance does not equal a given instance
