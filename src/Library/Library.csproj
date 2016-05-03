@@ -50,6 +50,7 @@
     <Compile Include="Match.T.cs" />
     <Compile Include="Never.cs" />
     <Compile Include="NotNull.cs" />
+    <Compile Include="NotSame.cs" />
     <Compile Include="Null.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Same.cs" />

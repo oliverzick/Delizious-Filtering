@@ -63,6 +63,7 @@
     <Compile Include="LessThanTests.cs" />
     <Compile Include="NeverTests.cs" />
     <Compile Include="NotNullTests.cs" />
+    <Compile Include="NotSameTests.cs" />
     <Compile Include="NullTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SameTests.cs" />

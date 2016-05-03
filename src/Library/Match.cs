@@ -58,6 +58,17 @@ namespace Delizious.Filtering
             return Match<T>.Create(new Same<T>(reference));
         }
 
+        public static Match<T> NotSame<T>(T reference)
+            where T : class
+        {
+            if (ReferenceEquals(reference, null))
+            {
+                throw new ArgumentNullException(nameof(reference), "When matching an instance to not be a null reference use Match.NotNull<T>() instead.");
+            }
+
+            return Match<T>.Create(new NotSame<T>(reference));
+        }
+
         public static Match<T> Equal<T>(T reference)
         {
             if (ReferenceEquals(reference, null))
