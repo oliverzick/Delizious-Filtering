@@ -162,5 +162,20 @@ namespace Delizious.Filtering
 
             return Match<T>.Any(matches);
         }
+
+        public static Match<T> None<T>(params Match<T>[] matches)
+        {
+            if (ReferenceEquals(matches, null))
+            {
+                throw new ArgumentNullException(nameof(matches));
+            }
+
+            if (matches.Any(match => ReferenceEquals(match, null)))
+            {
+                throw new ArgumentException("At least one match is a null reference.", nameof(matches));
+            }
+
+            return Match<T>.None(matches);
+        }
     }
 }

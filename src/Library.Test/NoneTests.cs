@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="AllTests.cs" company="Oliver Zick">
+// // <copyright file="NoneTests.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -24,34 +24,34 @@ namespace Delizious.Filtering
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public sealed class AllTests
+    public sealed class NoneTests
     {
         [TestMethod]
         public void Succeed__When_No_Matches_Are_Given()
         {
-            Assert.IsTrue(Match.All<GenericParameterHelper>().Matches(null));
+            Assert.IsTrue(Match.None<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Succeed__When_All_Matches_Succeed()
+        public void Fail__When_All_Matches_Succeed()
         {
-            Assert.IsTrue(Match.All(Match.Always<GenericParameterHelper>(),
-                                    Match.Always<GenericParameterHelper>(),
-                                    Match.Always<GenericParameterHelper>()).Matches(null));
+            Assert.IsFalse(Match.None(Match.Always<GenericParameterHelper>(),
+                                      Match.Always<GenericParameterHelper>(),
+                                      Match.Always<GenericParameterHelper>()).Matches(null));
         }
 
         [TestMethod]
-        public void Fail__When_At_Least_One_Match_Fails()
+        public void Fail__When_At_Least_One_Match_Succeeds()
         {
-            Assert.IsFalse(Match.All(Match.Always<GenericParameterHelper>(),
-                                     Match.Never<GenericParameterHelper>(),
-                                     Match.Always<GenericParameterHelper>()).Matches(null));
+            Assert.IsFalse(Match.None(Match.Never<GenericParameterHelper>(),
+                                      Match.Always<GenericParameterHelper>(),
+                                      Match.Never<GenericParameterHelper>()).Matches(null));
         }
 
         [TestMethod]
-        public void Fail__When_All_Matches_Fail()
+        public void Succeed__When_All_Matches_Fail()
         {
-            Assert.IsFalse(Match.All(Match.Never<GenericParameterHelper>(),
+            Assert.IsTrue(Match.None(Match.Never<GenericParameterHelper>(),
                                      Match.Never<GenericParameterHelper>(),
                                      Match.Never<GenericParameterHelper>()).Matches(null));
         }
@@ -60,14 +60,14 @@ namespace Delizious.Filtering
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throw_Exception__When_Matches_Are_Null()
         {
-            Match.All<GenericParameterHelper>(null);
+            Match.None<GenericParameterHelper>(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Throw_Exception__When_Matches_Contain_At_Least_One_Null_Reference()
         {
-            Match.All(Match.Always<GenericParameterHelper>(), null);
+            Match.None(Match.Always<GenericParameterHelper>(), null);
         }
     }
 }
