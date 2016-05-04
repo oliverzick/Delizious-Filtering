@@ -22,6 +22,12 @@ namespace Delizious.Filtering
 {
     using System.Linq;
 
+    /// <summary>
+    /// Represents a strongly typed match that provides a method to determine whether a value matches with.
+    /// </summary>
+    /// <typeparam name="T">
+    /// The type of the value to match.
+    /// </typeparam>
     public sealed class Match<T> : IMatch<T>
     {
         private readonly IMatch<T> match;
@@ -51,6 +57,15 @@ namespace Delizious.Filtering
             return Create(new None<T>(matches.Select(match => match.match).ToArray()));
         }
 
+        /// <summary>
+        /// Determines whether the specified <paramref name="value"/> successfully matches with this match instance.
+        /// </summary>
+        /// <param name="value">
+        /// The value to match.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if <paramref name="value"/> successfully matches with this match instance; otherwise, <c>false</c>.
+        /// </returns>
         public bool Matches(T value)
         {
             return this.match.Matches(value);
