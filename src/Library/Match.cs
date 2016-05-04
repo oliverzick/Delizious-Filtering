@@ -25,11 +25,29 @@ namespace Delizious.Filtering
 
     public static class Match
     {
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that always matches successfully regardless the value to match.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the value to match.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that always matches successfully.
+        /// </returns>
         public static Match<T> Always<T>()
         {
             return Match<T>.Create(new Always<T>());
         }
 
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that never matches successfully regardless the value to match.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the value to match.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that never matches successfully.
+        /// </returns>
         public static Match<T> Never<T>()
         {
             return Match<T>.Create(new Never<T>());
