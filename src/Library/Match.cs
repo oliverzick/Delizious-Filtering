@@ -100,6 +100,7 @@ namespace Delizious.Filtering
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="reference"/> is <c>null</c>.
+        /// When matching an instance to be a <c>null</c> reference use <see cref="Null{T}"/> instead.
         /// </exception>
         public static Match<T> Same<T>(T reference)
             where T : class
@@ -126,6 +127,7 @@ namespace Delizious.Filtering
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="reference"/> is <c>null</c>.
+        /// When matching an instance to not be a <c>null</c> reference use <see cref="NotNull{T}"/> instead.
         /// </exception>
         public static Match<T> NotSame<T>(T reference)
             where T : class
