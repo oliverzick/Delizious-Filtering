@@ -229,6 +229,21 @@ namespace Delizious.Filtering
             return Match<T>.Create(new GreaterThanOrEqualTo<T>(reference));
         }
 
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that matches successfully when the value to match is less than the specified <paramref name="reference"/>.
+        /// </summary>
+        /// <param name="reference">
+        /// The instance a value to match must be less than to match successfully.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of the value to match. This type must implement the <see cref="IComparable{T}"/> interface.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that determines whether the value to match is less than the specified <paramref name="reference"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="reference"/> is <c>null</c>.
+        /// </exception>
         public static Match<T> LessThan<T>(T reference)
             where T : IComparable<T>
         {
