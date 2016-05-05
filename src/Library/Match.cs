@@ -23,6 +23,9 @@ namespace Delizious.Filtering
     using System;
     using System.Linq;
 
+    /// <summary>
+    /// Provides static factory methods to create different kinds of <see cref="Match{T}"/> instances.
+    /// </summary>
     public static class Match
     {
         /// <summary>
