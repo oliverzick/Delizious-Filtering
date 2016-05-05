@@ -71,6 +71,15 @@ namespace Delizious.Filtering
             return Match<T>.Create(new Null<T>());
         }
 
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that matches successfully when the value to match is not a <c>null</c> reference.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the value to match. This must be a reference type.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that determines whether the value to match is not a <c>null</c> reference.
+        /// </returns>
         public static Match<T> NotNull<T>()
             where T : class
         {
