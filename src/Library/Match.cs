@@ -112,6 +112,21 @@ namespace Delizious.Filtering
             return Match<T>.Create(new Same<T>(reference));
         }
 
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that matches successfully when the value to match is not the same instance as the specified <paramref name="reference"/>.
+        /// </summary>
+        /// <param name="reference">
+        /// The instance a value to match must not be the same to match successfully.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of the value to match. This must be a reference type.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that determines whether the value to match is not the same instance as the specified <paramref name="reference"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="reference"/> is <c>null</c>.
+        /// </exception>
         public static Match<T> NotSame<T>(T reference)
             where T : class
         {
