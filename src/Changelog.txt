@@ -22,3 +22,4 @@ Version 1.0.0:
 	- Issue #18: Support .NET Framework 4.5.2
 	- Issue #19: Support .NET Framework 4.5.1
 	- Issue #20: Support .NET Framework 4.5
+	- Issue #21: Support .NET Framework 4
