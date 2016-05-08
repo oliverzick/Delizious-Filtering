@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A057AFC9-6B3A-4B9A-923F-AE968580961C}"
 	ProjectSection(SolutionItems) = preProject
 		Changelog.txt = Changelog.txt
+		NuGet.nuspec = NuGet.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Net46", "Library.Net46\Library.Net46.csproj", "{2E91E65E-74CC-49C7-A3AD-8CB23459A62C}"
