@@ -18,3 +18,11 @@ Succeeds always and returns `true` no matter what value is matched:
 
         // Always true
         var matches = match.Matches(123);
+        
+#### `Never` match
+Succeeds never and returns `false` no matter what value is matched:
+
+        var match = Match.Never<int>();
+
+        // Never true - always false ;-)
+        var matches = match.Matches(123);
