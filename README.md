@@ -26,7 +26,18 @@ Succeeds never and returns `false` no matter what value is matched:
 
     // Never true - always false ;-)
     var matches = match.Matches(123);
-        
+
+### `Null` match
+Succeeds when the value to match is a `null` reference:
+
+    var match = Match.Null<string>();
+    
+    // true, null matches null (surprise!)
+    var successful = match.Matches(null);
+    
+    // false, "Some" is not a null reference (surprise too!)
+    var failed = match.Matches("Some");
+
 ### `Same` match
 Succeeds when the value to match represents the same instance the match was initialized with:
 
