@@ -9,3 +9,12 @@ To install Delizious-Filtering, run the following command in the [Package Manage
 ## License
 Apache License, Version 2.0 
 [http://opensource.org/licenses/Apache-2.0](http://opensource.org/licenses/Apache-2.0)
+
+## Tutorial
+#### `Always` match
+Succeeds always and returns `true` no matter what value is matched:
+        
+        var match = Match.Always<int>();
+
+        // Always true
+        var matches = match.Matches(123);
