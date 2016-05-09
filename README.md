@@ -62,3 +62,17 @@ Succeeds when the value to match represents the same instance the match was init
     
     // false, "other" is not the same reference the match was initialized with
     var areNotSame = match.Matches(other);
+
+### `NotSame` match
+Succeeds when the value to match does not represent the same instance the match was initialized with:
+
+    var some = new object();
+    var other = new object();
+    
+    var match = Match.NotSame(some);
+    
+    // false, "some" is the same reference the match was initialized with
+    var areSame = match.Matches(some);
+    
+    // true, "other" is not the same reference the match was initialized with
+    var areNotSame = match.Matches(other);
