@@ -14,18 +14,18 @@ Apache License, Version 2.0
 #### `Always` match
 Succeeds always and returns `true` no matter what value is matched:
         
-        var match = Match.Always<int>();
+    var match = Match.Always<int>();
 
-        // Always true
-        var matches = match.Matches(123);
+    // Always true
+    var matches = match.Matches(123);
         
 #### `Never` match
 Succeeds never and returns `false` no matter what value is matched:
 
-        var match = Match.Never<int>();
+    var match = Match.Never<int>();
 
-        // Never true - always false ;-)
-        var matches = match.Matches(123);
+    // Never true - always false ;-)
+    var matches = match.Matches(123);
         
 ### `Same` match
 Succeeds when the value to match represents the same instance the match was initialized with:
