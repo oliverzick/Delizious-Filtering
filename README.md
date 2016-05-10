@@ -1,5 +1,6 @@
 # Delizious Filtering
-A flexible and easy to use .NET library that simplifies matching of values (definition of conditions) and filtering.
+## What?
+Delizious Filtering is a .NET library entirely written in C# that simplifies matching of values as well as filtering of collections. It comes with a fluent and straightforward API and lets you define matches (conditions) the easy way.
 
 ## Getting started
 To install Delizious-Filtering, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
