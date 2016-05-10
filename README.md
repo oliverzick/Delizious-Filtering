@@ -1,6 +1,6 @@
 # Delizious Filtering
 ## What?
-Delizious Filtering is a .NET library entirely written in C# that simplifies matching of values as well as filtering of collections. It comes with a fluent and straightforward API and lets you define matches (conditions) the easy way.
+Delizious Filtering is a flexible and easy to use .NET library entirely written in C# that simplifies matching of values as well as filtering of collections. It comes with a fluent and straightforward API and lets you define matches (conditions) the easy way.
 
 ## Features
 Delizious Filtering provides the following features:
