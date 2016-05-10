@@ -18,12 +18,12 @@ Match | What for
 `NotNull` | Succeeds when the value to match is not a `null` reference
 `Same` | Succeeds when the value to match represents the same instance the match was initialized with
 `NotSame` | Succeeds when the value to match does not represent the same instance the match was initialized with
-`Equal` |
-`NotEqual` |
-`GreaterThan` |
-`GreaterThanOrEqualTo` |
-`LessThan` |
-`LessThanOrEqualTo` |
+`Equal` | Succeeds when the value to match is equal to the instance the match was initialized with
+`NotEqual` | Succeeds when the value to match is not equal to the instance the match was initialized with
+`GreaterThan` | Succeeds when the value to match is greater than the instance the match was initialized with
+`GreaterThanOrEqualTo` | Succeeds when the value to match is greater than or equal to the instance the match was initialized with
+`LessThan` | Succeeds when the value to match is less than the instance the match was initialized with
+`LessThanOrEqualTo` | Succeeds when the value to match is less than or equal to the instance the match was initialized with
 `All` |
 `Any` |
 `None` |
