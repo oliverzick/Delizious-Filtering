@@ -5,8 +5,12 @@ Delizious Filtering is a .NET library entirely written in C# that simplifies mat
 ## Features
 Delizious Filtering provides the following features:
 * Intuitive and fluent API design
-* Implementation of matches is based on [immutability](https://blogs.msdn.microsoft.com/ericlippert/2007/11/13/immutability-in-c-part-one-kinds-of-immutability/) and value semantics (upcoming version)
 * Enables separation of object graph construction (define matches) and application logic (match matches) as discussed [here](http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html) (by the way a very interesting arcticle about writing testable code!)
+
+Upcoming features:
+* Implementation of matches is based on [immutability](https://blogs.msdn.microsoft.com/ericlippert/2007/11/13/immutability-in-c-part-one-kinds-of-immutability/) and value semantics
+* Enable custom matches
+* Simplified use with LINQ
 
 ## Matches
 
