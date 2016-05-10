@@ -12,18 +12,18 @@ Delizious Filtering provides the following features:
 
 Match | What for
 ----- | --------
-`Always` | Succeeds always and returns `true` no matter what value is matched
-`Never` | Succeeds never and returns `false` no matter what value is matched
-`Null` | Succeeds when the value to match is a `null` reference
-`NotNull` | Succeeds when the value to match is not a `null` reference
-`Same` | Succeeds when the value to match represents the same instance the match was initialized with
-`NotSame` | Succeeds when the value to match does not represent the same instance the match was initialized with
-`Equal` | Succeeds when the value to match is equal to the instance the match was initialized with
-`NotEqual` | Succeeds when the value to match is not equal to the instance the match was initialized with
-`GreaterThan` | Succeeds when the value to match is greater than the instance the match was initialized with
-`GreaterThanOrEqualTo` | Succeeds when the value to match is greater than or equal to the instance the match was initialized with
-`LessThan` | Succeeds when the value to match is less than the instance the match was initialized with
-`LessThanOrEqualTo` | Succeeds when the value to match is less than or equal to the instance the match was initialized with
+`Always` | Succeeds always no matter what value is matched
+`Never` | Succeeds never no matter what value is matched
+`Null` | Succeeds when a value is a `null` reference
+`NotNull` | Succeeds when a value is not a `null` reference
+`Same` | Succeeds when a value represents the same instance the match was initialized with
+`NotSame` | Succeeds when a value does not represent the same instance the match was initialized with
+`Equal` | Succeeds when a value is equal to the instance the match was initialized with
+`NotEqual` | Succeeds when a value is not equal to the instance the match was initialized with
+`GreaterThan` | Succeeds when a value is greater than the instance the match was initialized with
+`GreaterThanOrEqualTo` | Succeeds when a value is greater than or equal to the instance the match was initialized with
+`LessThan` | Succeeds when a value is less than the instance the match was initialized with
+`LessThanOrEqualTo` | Succeeds when a value is less than or equal to the instance the match was initialized with
 `All` | Succeeds when a value matches all of the given matches
 `Any` | Succeeds when a value matches any of the given matches
 `None` | Succeeds when a value matches none of the given matches
