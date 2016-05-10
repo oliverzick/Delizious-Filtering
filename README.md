@@ -2,6 +2,12 @@
 ## What?
 Delizious Filtering is a .NET library entirely written in C# that simplifies matching of values as well as filtering of collections. It comes with a fluent and straightforward API and lets you define matches (conditions) the easy way.
 
+## Features
+Delizious Filtering provides the following features:
+* Intuitive and fluent API design
+* Implementation of matches is based on [immutability](https://blogs.msdn.microsoft.com/ericlippert/2007/11/13/immutability-in-c-part-one-kinds-of-immutability/) and value semantics (upcoming version)
+* Enables separation of object graph construction (define matches) and application logic (match matches) as discussed [here](http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html) (by the way a very interesting arcticle about writing testable code!)
+
 ## Getting started
 To install Delizious-Filtering, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
 
