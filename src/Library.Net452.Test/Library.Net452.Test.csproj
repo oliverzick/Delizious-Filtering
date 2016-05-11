@@ -50,6 +50,9 @@
     <Compile Include="..\Library.Test\AnyTests.cs">
       <Link>AnyTests.cs</Link>
     </Compile>
+    <Compile Include="..\Library.Test\CustomTests.cs">
+      <Link>CustomTests.cs</Link>
+    </Compile>
     <Compile Include="..\Library.Test\EqualTests.cs">
       <Link>EqualTests.cs</Link>
     </Compile>

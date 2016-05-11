@@ -394,5 +394,30 @@ namespace Delizious.Filtering
 
             return Match<T>.None(matches);
         }
+
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that matches successfully when a value matches according to the specified custom <paramref name="match"/>.
+        /// </summary>
+        /// <param name="match">
+        /// The custom match a value is matched with.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of the value to match.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that determines whether a value matches according to the specified custom <paramref name="match"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="match"/> is <c>null</c>.
+        /// </exception>
+        public static Match<T> Custom<T>(IMatch<T> match)
+        {
+            if (ReferenceEquals(match, null))
+            {
+                throw new ArgumentNullException(nameof(match));
+            }
+
+            return Match<T>.Create(match);
+        }
     }
 }

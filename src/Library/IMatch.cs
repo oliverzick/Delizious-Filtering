@@ -20,8 +20,23 @@
 
 namespace Delizious.Filtering
 {
-    internal interface IMatch<in T>
+    /// <summary>
+    /// Represents a strongly typed match that provides a method to determine whether a value matches with.
+    /// </summary>
+    /// <typeparam name="T">
+    /// The type of the value to match.
+    /// </typeparam>
+    public interface IMatch<in T>
     {
+        /// <summary>
+        /// Determines whether the specified <paramref name="value"/> successfully matches with this match instance.
+        /// </summary>
+        /// <param name="value">
+        /// The value to match.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if <paramref name="value"/> successfully matches with this match instance; otherwise, <c>false</c>.
+        /// </returns>
         bool Matches(T value);
     }
 }

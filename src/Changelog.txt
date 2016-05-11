@@ -1,6 +1,10 @@
 Delizious Filtering Library
 Copyright © 2016 Oliver Zick. All rights reserved.
 
+Version 1.1.0:
+
+	- Issue #23: Enable custom matches
+
 Version 1.0.0:
 
 	- Issue #1: Enable match that determines whether an instance is same as a given instance
