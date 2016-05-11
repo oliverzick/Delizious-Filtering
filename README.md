@@ -14,7 +14,7 @@ Upcoming features:
 
 ## Matches
 
-Match | What for
+Match | What
 ----- | --------
 `Always` | Succeeds always no matter what value is matched
 `Never` | Succeeds never no matter what value is matched
