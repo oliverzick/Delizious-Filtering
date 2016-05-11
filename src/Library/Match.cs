@@ -380,7 +380,7 @@ namespace Delizious.Filtering
         /// <exception cref="ArgumentException">
         /// <paramref name="matches"/> contain at least one match that is <c>null</c>.
         /// </exception>
-        public static Match<T> None<T>(params Match<T>[] matches)
+        public static Match<T> Except<T>(params Match<T>[] matches)
         {
             if (ReferenceEquals(matches, null))
             {
@@ -392,7 +392,31 @@ namespace Delizious.Filtering
                 throw new ArgumentException("At least one match is a null reference.", nameof(matches));
             }
 
-            return Match<T>.None(matches);
+            return Match<T>.Except(matches);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="Match{T}"/> instance that matches successfully when a value matches none of the specified <paramref name="matches"/>.
+        /// </summary>
+        /// <param name="matches">
+        /// The matches a value is matched with.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of the value to match.
+        /// </typeparam>
+        /// <returns>
+        /// A new <see cref="Match{T}"/> instance that determines whether a value matches none of the specified <paramref name="matches"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="matches"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="matches"/> contain at least one match that is <c>null</c>.
+        /// </exception>
+        [Obsolete("Use Match.Except(...) instead. This method will be removed soon.")]
+        public static Match<T> None<T>(params Match<T>[] matches)
+        {
+            return Except(matches);
         }
 
         /// <summary>

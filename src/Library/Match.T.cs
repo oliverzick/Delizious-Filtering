@@ -52,9 +52,9 @@ namespace Delizious.Filtering
             return Create(new Any<T>(matches.Select(match => match.match).ToArray()));
         }
 
-        internal static Match<T> None(params Match<T>[] matches)
+        internal static Match<T> Except(params Match<T>[] matches)
         {
-            return Create(new None<T>(matches.Select(match => match.match).ToArray()));
+            return Create(new Except<T>(matches.Select(match => match.match).ToArray()));
         }
 
         /// <summary>

@@ -43,6 +43,7 @@
     <Compile Include="Always.cs" />
     <Compile Include="Any.cs" />
     <Compile Include="Equal.cs" />
+    <Compile Include="Except.cs" />
     <Compile Include="GreaterThan.cs" />
     <Compile Include="GreaterThanOrEqualTo.cs" />
     <Compile Include="IMatch.cs" />
@@ -51,7 +52,6 @@
     <Compile Include="Match.cs" />
     <Compile Include="Match.T.cs" />
     <Compile Include="Never.cs" />
-    <Compile Include="None.cs" />
     <Compile Include="NotEqual.cs" />
     <Compile Include="NotNull.cs" />
     <Compile Include="NotSame.cs" />

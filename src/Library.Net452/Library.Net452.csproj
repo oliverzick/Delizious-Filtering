@@ -51,6 +51,9 @@
     <Compile Include="..\Library\Equal.cs">
       <Link>Equal.cs</Link>
     </Compile>
+    <Compile Include="..\Library\Except.cs">
+      <Link>Except.cs</Link>
+    </Compile>
     <Compile Include="..\Library\GreaterThan.cs">
       <Link>GreaterThan.cs</Link>
     </Compile>
@@ -74,9 +77,6 @@
     </Compile>
     <Compile Include="..\Library\Never.cs">
       <Link>Never.cs</Link>
-    </Compile>
-    <Compile Include="..\Library\None.cs">
-      <Link>None.cs</Link>
     </Compile>
     <Compile Include="..\Library\NotEqual.cs">
       <Link>NotEqual.cs</Link>

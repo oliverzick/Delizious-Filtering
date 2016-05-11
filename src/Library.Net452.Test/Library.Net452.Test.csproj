@@ -56,6 +56,9 @@
     <Compile Include="..\Library.Test\EqualTests.cs">
       <Link>EqualTests.cs</Link>
     </Compile>
+    <Compile Include="..\Library.Test\ExceptTests.cs">
+      <Link>ExceptTests.cs</Link>
+    </Compile>
     <Compile Include="..\Library.Test\GreaterThanOrEqualToTests.cs">
       <Link>GreaterThanOrEqualToTests.cs</Link>
     </Compile>

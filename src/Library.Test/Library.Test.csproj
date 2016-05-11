@@ -58,6 +58,7 @@
     <Compile Include="AnyTests.cs" />
     <Compile Include="CustomTests.cs" />
     <Compile Include="EqualTests.cs" />
+    <Compile Include="ExceptTests.cs" />
     <Compile Include="GreaterThanOrEqualToTests.cs" />
     <Compile Include="GreaterThanTests.cs" />
     <Compile Include="LessThanOrEqualToTests.cs" />

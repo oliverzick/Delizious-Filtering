@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// // <copyright file="None.cs" company="Oliver Zick">
+// // <copyright file="Except.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -22,11 +22,11 @@ namespace Delizious.Filtering
 {
     using System.Linq;
 
-    internal sealed class None<T> : IMatch<T>
+    internal sealed class Except<T> : IMatch<T>
     {
         private readonly IMatch<T>[] matches;
 
-        public None(IMatch<T>[] matches)
+        public Except(IMatch<T>[] matches)
         {
             this.matches = matches;
         }
