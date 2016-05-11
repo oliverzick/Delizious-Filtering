@@ -30,7 +30,7 @@ Match | What
 `LessThanOrEqualTo` | Succeeds when a value is less than or equal to the instance the match was initialized with
 `All` | Succeeds when a value matches all of the given matches
 `Any` | Succeeds when a value matches any of the given matches
-`None` | Succeeds when a value matches none of the given matches
+`Except` | Succeeds when a value matches none of the given matches
 
 ## Getting started
 To install Delizious-Filtering, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
