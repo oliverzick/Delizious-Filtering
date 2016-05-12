@@ -31,6 +31,7 @@ Match | What
 `All` | Succeeds when a value matches all of the given matches
 `Any` | Succeeds when a value matches any of the given matches
 `Except` | Succeeds when a value matches none of the given matches
+`Custom` | Succeeds when a value matches according to the given custom match
 
 ## Getting started
 To install Delizious-Filtering, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
