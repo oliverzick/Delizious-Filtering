@@ -34,7 +34,7 @@ Match | What
 `Custom` | Succeeds when a value matches according to the given custom match
 
 ## Getting started
-To install Delizious-Filtering, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
+To install Delizious Filtering, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
 
     PM> Install-Package Delizious-Filtering
 
