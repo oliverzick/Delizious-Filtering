@@ -26,13 +26,13 @@ namespace Delizious.Filtering
     public sealed class NotNullTests
     {
         [TestMethod]
-        public void Fail__When_Value_Is_Null()
+        public void Match_Fails_When_Value_To_Match_Is_Null()
         {
             Assert.IsFalse(Match.NotNull<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Succeed__When_Value_Is_An_Instance()
+        public void Match_Succeeds_When_Value_To_Match_Is_An_Instance()
         {
             Assert.IsTrue(Match.NotNull<GenericParameterHelper>().Matches(new GenericParameterHelper()));
         }
