@@ -26,13 +26,13 @@ namespace Delizious.Filtering
     public sealed class NeverTests
     {
         [TestMethod]
-        public void Fail__When_Value_Is_Null()
+        public void Match_Fails_When_Value_To_Match_Is_Null()
         {
             Assert.IsFalse(Match.Never<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Fail__When_Value_Is_An_Instance()
+        public void Match_Fails_When_Value_To_Match_Is_An_Instance()
         {
             Assert.IsFalse(Match.Never<GenericParameterHelper>().Matches(new GenericParameterHelper()));
         }
