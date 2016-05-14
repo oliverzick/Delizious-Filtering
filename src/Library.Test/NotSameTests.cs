@@ -27,19 +27,19 @@ namespace Delizious.Filtering
     public sealed class NotSameTests
     {
         [TestMethod]
-        public void Succeed__When_Reference_Is_An_Instance_And_Value_Is_Null()
+        public void Match_Succeeds_When_Value_To_Match_Is_Null_But_Reference_Is_An_Instance()
         {
             Assert.IsTrue(Match.NotSame(new GenericParameterHelper()).Matches(null));
         }
 
         [TestMethod]
-        public void Succeed__When_Reference_And_Value_Are_Not_Same()
+        public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Different_Instances()
         {
             Assert.IsTrue(Match.NotSame(new GenericParameterHelper()).Matches(new GenericParameterHelper()));
         }
 
         [TestMethod]
-        public void Fail__When_Reference_And_Value_Are_Same()
+        public void Match_Fails_When_Value_To_Match_And_Reference_Are_Same_Instance()
         {
             var obj = new GenericParameterHelper();
 
@@ -48,7 +48,7 @@ namespace Delizious.Filtering
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Throw_Exception__When_Reference_Is_Null()
+        public void Match_Throws_Exception_When_Reference_Is_Null()
         {
             Match.NotSame<GenericParameterHelper>(null);
         }
