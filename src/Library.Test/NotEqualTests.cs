@@ -27,13 +27,13 @@ namespace Delizious.Filtering
     public sealed class NotEqualTests
     {
         [TestMethod]
-        public void Succeed__For_Reference_Type__When_Reference_Is_An_Instance_And_Value_Is_Null()
+        public void Match_Succeeds_When_Value_To_Match_Is_Null_And_Reference_Is_An_Instance_Of_A_Reference_Type()
         {
             Assert.IsTrue(Match.NotEqual(new object()).Matches(null));
         }
 
         [TestMethod]
-        public void Fail__For_Reference_Type__When_Reference_And_Value_Are_Same()
+        public void Match_Fails_When_Value_To_Match_And_Reference_Are_The_Same_Instance_Of_A_Reference_Type()
         {
             var obj = new object();
 
@@ -41,19 +41,19 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Succeed__For_Reference_Type__When_Reference_And_Value_Are_Not_Same()
+        public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Different_Instances_Of_A_Reference_Type()
         {
             Assert.IsTrue(Match.NotEqual(new object()).Matches(new object()));
         }
 
         [TestMethod]
-        public void Succeed__For_Reference_Type_With_Value_Semantics__When_Reference_Is_An_Instance_And_Value_Is_Null()
+        public void Match_Succeeds_When_Value_To_Match_Is_Null_And_Reference_Is_An_Instance_Of_A_Reference_Type_With_Value_Semantics()
         {
             Assert.IsTrue(Match.NotEqual(new GenericParameterHelper()).Matches(null));
         }
 
         [TestMethod]
-        public void Fail__For_Reference_Type_With_Value_Semantics__When_Reference_And_Value_Are_Same()
+        public void Match_Fails_When_Value_To_Match_And_Reference_Are_The_Same_Instance_Of_A_Reference_Type_With_Value_Semantics()
         {
             var obj = new GenericParameterHelper(1);
 
@@ -61,32 +61,32 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Fail__For_Reference_Type_With_Value_Semantics__When_Reference_And_Value_Are_Equal()
+        public void Match_Fails_When_Value_To_Match_And_Reference_Are_Equal_Instances_Of_A_Reference_Type_With_Value_Semantics()
         {
             Assert.IsFalse(Match.NotEqual(new GenericParameterHelper(1)).Matches(new GenericParameterHelper(1)));
         }
 
         [TestMethod]
-        public void Succeed__For_Reference_Type_With_Value_Semantics__When_Reference_And_Value_Are_Unequal()
+        public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Unequal_Instances_Of_A_Reference_Type_With_Value_Semantics()
         {
             Assert.IsTrue(Match.NotEqual(new GenericParameterHelper(1)).Matches(new GenericParameterHelper(0)));
         }
 
         [TestMethod]
-        public void Fail__For_Value_Type__When_Reference_And_Value_Are_Equal()
+        public void Match_Fails_When_Value_To_Match_And_Reference_Are_Equal_Instances_Of_A_Value_Type()
         {
             Assert.IsFalse(Match.NotEqual(1).Matches(1));
         }
 
         [TestMethod]
-        public void Succeed__For_Value_Type__When_Reference_And_Value_Are_Unequal()
+        public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Unequal_Instances_Of_A_Value_Type()
         {
             Assert.IsTrue(Match.NotEqual(1).Matches(0));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Throw_Exception__When_Reference_Is_Null()
+        public void Throws_Exception_On_Creation_When_Reference_Is_Null()
         {
             Match.NotEqual<GenericParameterHelper>(null);
         }
