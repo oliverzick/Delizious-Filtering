@@ -27,20 +27,20 @@ namespace Delizious.Filtering
     public sealed class CustomTests
     {
         [TestMethod]
-        public void Succeed__When_Match_Succeeds()
+        public void Match_Succeeds_When_Custom_Match_Succeeds()
         {
             Assert.IsTrue(Match.Custom(new MatchStub(1)).Matches(1));
         }
 
         [TestMethod]
-        public void Fail__When_Match_Fails()
+        public void Match_Fails_When_Custom_Match_Fails()
         {
             Assert.IsFalse(Match.Custom(new MatchStub(1)).Matches(0));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Throw_Exception__When_Match_Is_Null()
+        public void Throws_Exception_On_Creation_When_Custom_Match_Is_Null()
         {
             Match.Custom<GenericParameterHelper>(null);
         }

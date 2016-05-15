@@ -48,7 +48,7 @@ namespace Delizious.Filtering
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Match_Throws_Exception_When_Reference_Is_Null()
+        public void Throws_Exception_On_Creation_When_Reference_Is_Null()
         {
             Match.NotSame<GenericParameterHelper>(null);
         }
