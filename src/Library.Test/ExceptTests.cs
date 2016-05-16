@@ -27,13 +27,13 @@ namespace Delizious.Filtering
     public sealed class ExceptTests
     {
         [TestMethod]
-        public void Succeed__When_No_Matches_Are_Given()
+        public void Match_Succeeds_When_No_Matches_Are_Given()
         {
             Assert.IsTrue(Match.Except<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Fail__When_All_Matches_Succeed()
+        public void Match_Fails_When_All_Matches_Succeed()
         {
             Assert.IsFalse(Match.Except(Match.Always<GenericParameterHelper>(),
                                         Match.Always<GenericParameterHelper>(),
@@ -41,7 +41,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Fail__When_At_Least_One_Match_Succeeds()
+        public void Match_Fails_When_At_Least_One_Match_Succeeds()
         {
             Assert.IsFalse(Match.Except(Match.Never<GenericParameterHelper>(),
                                         Match.Always<GenericParameterHelper>(),
@@ -49,7 +49,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Succeed__When_All_Matches_Fail()
+        public void Match_Succeeds_When_All_Matches_Fail()
         {
             Assert.IsTrue(Match.Except(Match.Never<GenericParameterHelper>(),
                                        Match.Never<GenericParameterHelper>(),
@@ -58,14 +58,14 @@ namespace Delizious.Filtering
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Throw_Exception__When_Matches_Are_Null()
+        public void Throws_Exception_On_Creation_When_Matches_Are_Null()
         {
             Match.Except<GenericParameterHelper>(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void Throw_Exception__When_Matches_Contain_At_Least_One_Null_Reference()
+        public void Throws_Exception_On_Creation_When_Matches_Contain_At_Least_One_Null_Reference()
         {
             Match.Except(Match.Always<GenericParameterHelper>(), null);
         }

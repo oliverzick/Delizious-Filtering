@@ -27,13 +27,13 @@ namespace Delizious.Filtering
     public sealed class AllTests
     {
         [TestMethod]
-        public void Succeed__When_No_Matches_Are_Given()
+        public void Match_Succeeds_When_No_Matches_Are_Given()
         {
             Assert.IsTrue(Match.All<GenericParameterHelper>().Matches(null));
         }
 
         [TestMethod]
-        public void Succeed__When_All_Matches_Succeed()
+        public void Match_Succeeds_When_All_Matches_Succeed()
         {
             Assert.IsTrue(Match.All(Match.Always<GenericParameterHelper>(),
                                     Match.Always<GenericParameterHelper>(),
@@ -41,7 +41,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Fail__When_At_Least_One_Match_Fails()
+        public void Match_Fails_When_At_Least_One_Match_Fails()
         {
             Assert.IsFalse(Match.All(Match.Always<GenericParameterHelper>(),
                                      Match.Never<GenericParameterHelper>(),
@@ -49,7 +49,7 @@ namespace Delizious.Filtering
         }
 
         [TestMethod]
-        public void Fail__When_All_Matches_Fail()
+        public void Match_Fails_When_All_Matches_Fail()
         {
             Assert.IsFalse(Match.All(Match.Never<GenericParameterHelper>(),
                                      Match.Never<GenericParameterHelper>(),
@@ -58,14 +58,14 @@ namespace Delizious.Filtering
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Throw_Exception__When_Matches_Are_Null()
+        public void Throws_Exception_On_Creation_When_Matches_Are_Null()
         {
             Match.All<GenericParameterHelper>(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void Throw_Exception__When_Matches_Contain_At_Least_One_Null_Reference()
+        public void Throws_Exception_On_Creation_When_Matches_Contain_At_Least_One_Null_Reference()
         {
             Match.All(Match.Always<GenericParameterHelper>(), null);
         }
