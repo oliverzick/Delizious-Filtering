@@ -1,5 +1,5 @@
-﻿#region Copyright and license
-// // <copyright file="CustomTests.cs" company="Oliver Zick">
+#region Copyright and license
+// // <copyright file="MatchStub.cs" company="Oliver Zick">
 // //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // // </copyright>
 // // <author>Oliver Zick</author>
@@ -20,29 +20,18 @@
 
 namespace Delizious.Filtering
 {
-    using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    [TestClass]
-    public sealed class CustomTests
+    internal sealed class MatchStub : IMatch<int>
     {
-        [TestMethod]
-        public void Match_Succeeds_When_Custom_Match_Succeeds()
+        private readonly int expected;
+
+        public MatchStub(int expected)
         {
-            Assert.IsTrue(Match.Custom(new MatchStub(1)).Matches(1));
+            this.expected = expected;
         }
 
-        [TestMethod]
-        public void Match_Fails_When_Custom_Match_Fails()
+        public bool Matches(int value)
         {
-            Assert.IsFalse(Match.Custom(new MatchStub(1)).Matches(0));
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Throws_Exception_On_Creation_When_Custom_Match_Is_Null()
-        {
-            Match.Custom<GenericParameterHelper>(null);
+            return this.expected.Equals(value);
         }
     }
 }

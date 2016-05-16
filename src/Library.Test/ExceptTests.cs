@@ -29,45 +29,45 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Succeeds_When_No_Matches_Are_Given()
         {
-            Assert.IsTrue(Match.Except<GenericParameterHelper>().Matches(null));
+            Assert.IsTrue(Match.Except<int>().Matches(0));
         }
 
         [TestMethod]
         public void Match_Fails_When_All_Matches_Succeed()
         {
-            Assert.IsFalse(Match.Except(Match.Always<GenericParameterHelper>(),
-                                        Match.Always<GenericParameterHelper>(),
-                                        Match.Always<GenericParameterHelper>()).Matches(null));
+            Assert.IsFalse(Match.Except(Match.Custom(new MatchStub(1)),
+                                        Match.Custom(new MatchStub(1)),
+                                        Match.Custom(new MatchStub(1))).Matches(1));
         }
 
         [TestMethod]
         public void Match_Fails_When_At_Least_One_Match_Succeeds()
         {
-            Assert.IsFalse(Match.Except(Match.Never<GenericParameterHelper>(),
-                                        Match.Always<GenericParameterHelper>(),
-                                        Match.Never<GenericParameterHelper>()).Matches(null));
+            Assert.IsFalse(Match.Except(Match.Custom(new MatchStub(0)),
+                                        Match.Custom(new MatchStub(1)),
+                                        Match.Custom(new MatchStub(0))).Matches(1));
         }
 
         [TestMethod]
         public void Match_Succeeds_When_All_Matches_Fail()
         {
-            Assert.IsTrue(Match.Except(Match.Never<GenericParameterHelper>(),
-                                       Match.Never<GenericParameterHelper>(),
-                                       Match.Never<GenericParameterHelper>()).Matches(null));
+            Assert.IsTrue(Match.Except(Match.Custom(new MatchStub(0)),
+                                       Match.Custom(new MatchStub(0)),
+                                       Match.Custom(new MatchStub(0))).Matches(1));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throws_Exception_On_Creation_When_Matches_Are_Null()
         {
-            Match.Except<GenericParameterHelper>(null);
+            Match.Except<int>(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Throws_Exception_On_Creation_When_Matches_Contain_At_Least_One_Null_Reference()
         {
-            Match.Except(Match.Always<GenericParameterHelper>(), null);
+            Match.Except(Match.Always<int>(), null);
         }
     }
 }

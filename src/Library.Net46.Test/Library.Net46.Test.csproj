@@ -68,6 +68,9 @@
     <Compile Include="..\Library.Test\LessThanTests.cs">
       <Link>LessThanTests.cs</Link>
     </Compile>
+    <Compile Include="..\Library.Test\MatchStub.cs">
+      <Link>MatchStub.cs</Link>
+    </Compile>
     <Compile Include="..\Library.Test\NeverTests.cs">
       <Link>NeverTests.cs</Link>
     </Compile>
