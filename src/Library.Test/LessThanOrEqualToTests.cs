@@ -27,26 +27,26 @@ namespace Delizious.Filtering
     public sealed class LessThanOrEqualToTests
     {
         [TestMethod]
-        public void Fail__When_Value_Is_Greater_Than_Reference()
+        public void Match_Fails_When_Value_To_Match_Is_Greater_Than_Reference()
         {
             Assert.IsFalse(Match.LessThanOrEqualTo(0).Matches(1));
         }
 
         [TestMethod]
-        public void Succeed__When_Reference_And_Value_Are_Equal()
+        public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Equal()
         {
             Assert.IsTrue(Match.LessThanOrEqualTo(0).Matches(0));
         }
 
         [TestMethod]
-        public void Succeed__When_Value_Is_Less_Than_Reference()
+        public void Match_Succeeds_When_Value_To_Match_Is_Less_Than_Reference()
         {
             Assert.IsTrue(Match.LessThanOrEqualTo(0).Matches(-1));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Throw_Exception__When_Reference_Is_Null()
+        public void Throws_Exception_On_Creation_When_Reference_Is_Null()
         {
             Match.LessThanOrEqualTo<string>(null);
         }
