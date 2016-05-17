@@ -5,7 +5,7 @@ Delizious Filtering is a flexible and easy to use .NET library entirely written 
 ## Features
 Delizious Filtering provides the following features:
 * Intuitive and fluent API design
-* Enables separation of object graph construction (define matches) and application logic (match matches) as discussed [here](http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html) (by the way a very interesting arcticle about writing testable code!)
+* Enables separation of object graph construction (define matches) and application logic (match matches) as discussed [here](http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html) (by the way a very interesting article about writing testable code!)
 * Enable custom matches
 
 Upcoming features:
