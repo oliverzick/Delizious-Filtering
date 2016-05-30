@@ -20,6 +20,7 @@
 
 namespace Delizious.Filtering
 {
+    using System;
     using System.Linq;
 
     /// <summary>
@@ -28,7 +29,7 @@ namespace Delizious.Filtering
     /// <typeparam name="T">
     /// The type of the value to match.
     /// </typeparam>
-    public sealed class Match<T> : IMatch<T>
+    public sealed class Match<T> : IMatch<T>, IEquatable<Match<T>>
     {
         private readonly IMatch<T> match;
 
@@ -57,6 +58,16 @@ namespace Delizious.Filtering
             return Create(new Except<T>(matches.Select(match => match.match).ToArray()));
         }
 
+        public static bool operator ==(Match<T> left, Match<T> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Match<T> left, Match<T> right)
+        {
+            return !(left == right);
+        }
+
         /// <summary>
         /// Determines whether the specified <paramref name="value"/> successfully matches with this match instance.
         /// </summary>
@@ -69,6 +80,26 @@ namespace Delizious.Filtering
         public bool Matches(T value)
         {
             return this.match.Matches(value);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.match.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Match<T>);
+        }
+
+        public bool Equals(Match<T> other)
+        {
+            return ValueSemantics.Determine(other, this.ValueEquals);
+        }
+
+        private bool ValueEquals(Match<T> other)
+        {
+            return this.match.Equals(other.match);
         }
     }
 }

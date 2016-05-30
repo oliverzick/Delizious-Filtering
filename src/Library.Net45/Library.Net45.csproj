@@ -97,6 +97,9 @@
     <Compile Include="..\Library\Same.cs">
       <Link>Same.cs</Link>
     </Compile>
+    <Compile Include="..\Library\ValueSemantics.cs">
+      <Link>ValueSemantics.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
