@@ -20,11 +20,28 @@
 
 namespace Delizious.Filtering
 {
-    internal sealed class Never<T> : IMatch<T>
+    using System;
+
+    internal sealed class Never<T> : IMatch<T>, IEquatable<Never<T>>
     {
         public bool Matches(T value)
         {
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Never<T>);
+        }
+
+        public bool Equals(Never<T> other)
+        {
+            return !ReferenceEquals(other, null);
         }
     }
 }

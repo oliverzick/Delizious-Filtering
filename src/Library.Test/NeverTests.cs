@@ -28,13 +28,76 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_Is_Null()
         {
-            Assert.IsFalse(Match.Never<GenericParameterHelper>().Matches(null));
+            Assert.IsFalse(NewInstance().Matches(null));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_Is_An_Instance()
         {
-            Assert.IsFalse(Match.Never<GenericParameterHelper>().Matches(new GenericParameterHelper()));
+            Assert.IsFalse(NewInstance().Matches(new GenericParameterHelper()));
+        }
+
+        [TestMethod]
+        public void Ensure_Equal_Hash_Code_For_Equal_Instances()
+        {
+            Assert.AreEqual(NewInstance().GetHashCode(), NewInstance().GetHashCode());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed(Null() == Null()),
+                                                EqualityTest.Fail(NewInstance() == Null()),
+                                                EqualityTest.Fail(Null() == NewInstance()),
+                                                EqualityTest.Succeed(NewInstance() == NewInstance()),
+                                                EqualityTest.Fail(NewInstance() == NewDummy()),
+                                                EqualityTest.Fail(NewDummy() == NewInstance()))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Inequality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(Null() != Null()),
+                                                EqualityTest.Succeed(NewInstance() != Null()),
+                                                EqualityTest.Succeed(Null() != NewInstance()),
+                                                EqualityTest.Fail(NewInstance() != NewInstance()),
+                                                EqualityTest.Succeed(NewInstance() != NewDummy()),
+                                                EqualityTest.Succeed(NewDummy() != NewInstance()))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Type_Specific_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance().Equals(Null())),
+                                                EqualityTest.Succeed(NewInstance().Equals(NewInstance())),
+                                                EqualityTest.Fail(NewInstance().Equals(NewDummy())))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance().Equals((object)Null())),
+                                                EqualityTest.Succeed(NewInstance().Equals((object)NewInstance())),
+                                                EqualityTest.Fail(NewInstance().Equals((object)NewDummy())))
+                                      .Succeeds());
+        }
+
+        private static Match<GenericParameterHelper> Null()
+        {
+            return null;
+        }
+
+        private static Match<GenericParameterHelper> NewInstance()
+        {
+            return Match.Never<GenericParameterHelper>();
+        }
+
+        private static Match<GenericParameterHelper> NewDummy()
+        {
+            return Match.Custom(new MatchDummy<GenericParameterHelper>());
         }
     }
 }
