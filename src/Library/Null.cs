@@ -20,12 +20,29 @@
 
 namespace Delizious.Filtering
 {
-    internal sealed class Null<T> : IMatch<T>
+    using System;
+
+    internal sealed class Null<T> : IMatch<T>, IEquatable<Null<T>>
         where T : class
     {
         public bool Matches(T value)
         {
             return ReferenceEquals(value, null);
+        }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Null<T>);
+        }
+
+        public bool Equals(Null<T> other)
+        {
+            return !ReferenceEquals(other, null);
         }
     }
 }
