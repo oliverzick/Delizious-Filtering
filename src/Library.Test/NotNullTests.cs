@@ -46,9 +46,9 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Ensure_Value_Semantics_Using_Equality_Operator()
         {
-            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed(Null() == Null()),
-                                                EqualityTest.Fail(NewInstance() == Null()),
-                                                EqualityTest.Fail(Null() == NewInstance()),
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed((Match<GenericParameterHelper>)null == null),
+                                                EqualityTest.Fail(NewInstance() == null),
+                                                EqualityTest.Fail(null == NewInstance()),
                                                 EqualityTest.Succeed(NewInstance() == NewInstance()),
                                                 EqualityTest.Fail(NewInstance() == NewDummy()),
                                                 EqualityTest.Fail(NewDummy() == NewInstance()))
@@ -58,9 +58,9 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Ensure_Value_Semantics_Using_Inequality_Operator()
         {
-            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(Null() != Null()),
-                                                EqualityTest.Succeed(NewInstance() != Null()),
-                                                EqualityTest.Succeed(Null() != NewInstance()),
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail((Match<GenericParameterHelper>)null != null),
+                                                EqualityTest.Succeed(NewInstance() != null),
+                                                EqualityTest.Succeed(null != NewInstance()),
                                                 EqualityTest.Fail(NewInstance() != NewInstance()),
                                                 EqualityTest.Succeed(NewInstance() != NewDummy()),
                                                 EqualityTest.Succeed(NewDummy() != NewInstance()))
@@ -70,7 +70,7 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Ensure_Value_Semantics_Using_Type_Specific_Equals_Method()
         {
-            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance().Equals(Null())),
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance().Equals(null)),
                                                 EqualityTest.Succeed(NewInstance().Equals(NewInstance())),
                                                 EqualityTest.Fail(NewInstance().Equals(NewDummy())))
                                       .Succeeds());
@@ -79,15 +79,10 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Ensure_Value_Semantics_Using_Equals_Method()
         {
-            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance().Equals((object)Null())),
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance().Equals((object)null)),
                                                 EqualityTest.Succeed(NewInstance().Equals((object)NewInstance())),
                                                 EqualityTest.Fail(NewInstance().Equals((object)NewDummy())))
                                       .Succeeds());
-        }
-
-        private static Match<GenericParameterHelper> Null()
-        {
-            return null;
         }
 
         private static Match<GenericParameterHelper> NewInstance()
