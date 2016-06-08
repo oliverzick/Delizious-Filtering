@@ -80,9 +80,6 @@
     <Compile Include="..\Library.Test\NeverTests.cs">
       <Link>NeverTests.cs</Link>
     </Compile>
-    <Compile Include="..\Library.Test\NoneTests.cs">
-      <Link>NoneTests.cs</Link>
-    </Compile>
     <Compile Include="..\Library.Test\NotEqualTests.cs">
       <Link>NotEqualTests.cs</Link>
     </Compile>
