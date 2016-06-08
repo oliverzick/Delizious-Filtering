@@ -29,7 +29,7 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_Is_Null_And_Reference_Is_An_Instance_Of_A_Reference_Type()
         {
-            Assert.IsFalse(Match.Equal(new object()).Matches(null));
+            Assert.IsFalse(NewInstance(new object()).Matches(null));
         }
 
         [TestMethod]
@@ -37,58 +37,120 @@ namespace Delizious.Filtering
         {
             var obj = new object();
 
-            Assert.IsTrue(Match.Equal(obj).Matches(obj));
+            Assert.IsTrue(NewInstance(obj).Matches(obj));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_And_Reference_Are_Different_Instances_Of_A_Reference_Type()
         {
-            Assert.IsFalse(Match.Equal(new object()).Matches(new object()));
+            Assert.IsFalse(NewInstance(new object()).Matches(new object()));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_Is_Null_And_Reference_Is_An_Instance_Of_A_Reference_Type_With_Value_Semantics()
         {
-            Assert.IsFalse(Match.Equal(new GenericParameterHelper()).Matches(null));
+            Assert.IsFalse(NewInstance(new GenericParameterHelper()).Matches(null));
         }
 
         [TestMethod]
         public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_The_Same_Instance_Of_A_Reference_Type_With_Value_Semantics()
         {
-            var obj = new GenericParameterHelper(1);
+            var reference = new GenericParameterHelper(1);
 
-            Assert.IsTrue(Match.Equal(obj).Matches(obj));
+            Assert.IsTrue(NewInstance(reference).Matches(reference));
         }
 
         [TestMethod]
         public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Equal_Instances_Of_A_Reference_Type_With_Value_Semantics()
         {
-            Assert.IsTrue(Match.Equal(new GenericParameterHelper(1)).Matches(new GenericParameterHelper(1)));
+            Assert.IsTrue(NewInstance(new GenericParameterHelper(1)).Matches(new GenericParameterHelper(1)));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_And_Reference_Are_Unequal_Instances_Of_A_Reference_Type_With_Value_Semantics()
         {
-            Assert.IsFalse(Match.Equal(new GenericParameterHelper(1)).Matches(new GenericParameterHelper(0)));
+            Assert.IsFalse(NewInstance(new GenericParameterHelper(1)).Matches(new GenericParameterHelper(0)));
         }
 
         [TestMethod]
         public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Equal_Instances_Of_A_Value_Type()
         {
-            Assert.IsTrue(Match.Equal(1).Matches(1));
+            Assert.IsTrue(NewInstance(1).Matches(1));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_And_Reference_Are_Unequal_Instances_Of_A_Value_Type()
         {
-            Assert.IsFalse(Match.Equal(1).Matches(0));
+            Assert.IsFalse(NewInstance(1).Matches(0));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throws_Exception_On_Creation_When_Reference_Is_Null()
         {
-            Match.Equal<GenericParameterHelper>(null);
+            NewInstance<GenericParameterHelper>(null);
+        }
+
+        [TestMethod]
+        public void Ensure_Equal_Hash_Code_For_Equal_Instances()
+        {
+            Assert.AreEqual(NewInstance(1).GetHashCode(), NewInstance(1).GetHashCode());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed((Match<int>)null == null),
+                                                EqualityTest.Fail(NewInstance(1) == null),
+                                                EqualityTest.Fail(null == NewInstance(1)),
+                                                EqualityTest.Succeed(NewInstance(1) == NewInstance(1)),
+                                                EqualityTest.Fail(NewInstance(1) == NewInstance(0)),
+                                                EqualityTest.Fail(NewInstance(1) == NewDummy<int>()),
+                                                EqualityTest.Fail(NewDummy<int>() == NewInstance(1)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Inequality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail((Match<int>)null != null),
+                                                EqualityTest.Succeed(NewInstance(1) != null),
+                                                EqualityTest.Succeed(null != NewInstance(1)),
+                                                EqualityTest.Fail(NewInstance(1) != NewInstance(1)),
+                                                EqualityTest.Succeed(NewInstance(1) != NewInstance(0)),
+                                                EqualityTest.Succeed(NewInstance(1) != NewDummy<int>()),
+                                                EqualityTest.Succeed(NewDummy<int>() != NewInstance(1)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Type_Specific_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(1).Equals(null)),
+                                                EqualityTest.Succeed(NewInstance(1).Equals(NewInstance(1))),
+                                                EqualityTest.Fail(NewInstance(1).Equals(NewInstance(0))),
+                                                EqualityTest.Fail(NewInstance(1).Equals(NewDummy<int>())))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(1).Equals((object)null)),
+                                                EqualityTest.Succeed(NewInstance(1).Equals((object)NewInstance(1))),
+                                                EqualityTest.Fail(NewInstance(1).Equals((object)NewInstance(0))),
+                                                EqualityTest.Fail(NewInstance(1).Equals((object)NewDummy<int>())))
+                                      .Succeeds());
+        }
+
+        private static Match<T> NewInstance<T>(T reference)
+        {
+            return Match.Equal(reference);
+        }
+
+        private static Match<T> NewDummy<T>()
+        {
+            return Match.Custom(new MatchDummy<T>());
         }
     }
 }
