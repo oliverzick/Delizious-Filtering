@@ -29,26 +29,89 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Succeeds_When_Value_To_Match_Is_Greater_Than_Reference()
         {
-            Assert.IsTrue(Match.GreaterThanOrEqualTo(0).Matches(1));
+            Assert.IsTrue(NewInstance(0).Matches(1));
         }
 
         [TestMethod]
         public void Match_Succeeds_When_Value_To_Match_And_Reference_Are_Equal()
         {
-            Assert.IsTrue(Match.GreaterThanOrEqualTo(0).Matches(0));
+            Assert.IsTrue(NewInstance(0).Matches(0));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_Is_Less_Than_Reference()
         {
-            Assert.IsFalse(Match.GreaterThanOrEqualTo(0).Matches(-1));
+            Assert.IsFalse(NewInstance(0).Matches(-1));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throws_Exception_On_Creation_When_Reference_Is_Null()
         {
-            Match.GreaterThanOrEqualTo<string>(null);
+            NewInstance<string>(null);
+        }
+
+        [TestMethod]
+        public void Ensure_Equal_Hash_Code_For_Equal_Instances()
+        {
+            Assert.AreEqual(NewInstance(1).GetHashCode(), NewInstance(1).GetHashCode());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed((Match<int>)null == null),
+                                                EqualityTest.Fail(NewInstance(1) == null),
+                                                EqualityTest.Fail(null == NewInstance(1)),
+                                                EqualityTest.Succeed(NewInstance(1) == NewInstance(1)),
+                                                EqualityTest.Fail(NewInstance(1) == NewInstance(0)),
+                                                EqualityTest.Fail(NewInstance(1) == NewDummy<int>()),
+                                                EqualityTest.Fail(NewDummy<int>() == NewInstance(1)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Inequality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail((Match<int>)null != null),
+                                                EqualityTest.Succeed(NewInstance(1) != null),
+                                                EqualityTest.Succeed(null != NewInstance(1)),
+                                                EqualityTest.Fail(NewInstance(1) != NewInstance(1)),
+                                                EqualityTest.Succeed(NewInstance(1) != NewInstance(0)),
+                                                EqualityTest.Succeed(NewInstance(1) != NewDummy<int>()),
+                                                EqualityTest.Succeed(NewDummy<int>() != NewInstance(1)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Type_Specific_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(1).Equals(null)),
+                                                EqualityTest.Succeed(NewInstance(1).Equals(NewInstance(1))),
+                                                EqualityTest.Fail(NewInstance(1).Equals(NewInstance(0))),
+                                                EqualityTest.Fail(NewInstance(1).Equals(NewDummy<int>())))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(1).Equals((object)null)),
+                                                EqualityTest.Succeed(NewInstance(1).Equals((object)NewInstance(1))),
+                                                EqualityTest.Fail(NewInstance(1).Equals((object)NewInstance(0))),
+                                                EqualityTest.Fail(NewInstance(1).Equals((object)NewDummy<int>())))
+                                      .Succeeds());
+        }
+
+        private static Match<T> NewInstance<T>(T reference)
+            where T : IComparable<T>
+        {
+            return Match.GreaterThanOrEqualTo(reference);
+        }
+
+        private static Match<T> NewDummy<T>()
+        {
+            return Match.Custom(new MatchDummy<T>());
         }
     }
 }
