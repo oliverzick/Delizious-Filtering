@@ -29,13 +29,13 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_Is_Null_But_Reference_Is_An_Instance()
         {
-            Assert.IsFalse(Match.Same(new GenericParameterHelper()).Matches(null));
+            Assert.IsFalse(NewInstance(new GenericParameterHelper()).Matches(null));
         }
 
         [TestMethod]
         public void Match_Fails_When_Value_To_Match_And_Reference_Are_Different_Instances()
         {
-            Assert.IsFalse(Match.Same(new GenericParameterHelper()).Matches(new GenericParameterHelper()));
+            Assert.IsFalse(NewInstance(new GenericParameterHelper()).Matches(new GenericParameterHelper()));
         }
 
         [TestMethod]
@@ -43,14 +43,91 @@ namespace Delizious.Filtering
         {
             var obj = new GenericParameterHelper();
 
-            Assert.IsTrue(Match.Same(obj).Matches(obj));
+            Assert.IsTrue(NewInstance(obj).Matches(obj));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throws_Exception_On_Creation_When_Reference_Is_Null()
         {
-            Match.Same<GenericParameterHelper>(null);
+            NewInstance<GenericParameterHelper>(null);
+        }
+
+        [TestMethod]
+        public void Ensure_Equal_Hash_Code_For_Equal_Instances()
+        {
+            var reference = new object();
+
+            Assert.AreEqual(NewInstance(reference).GetHashCode(), NewInstance(reference).GetHashCode());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equality_Operator()
+        {
+            var reference = new object();
+            var otherReference = new object();
+
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed((Match<object>)null == null),
+                                                EqualityTest.Fail(NewInstance(reference) == null),
+                                                EqualityTest.Fail(null == NewInstance(reference)),
+                                                EqualityTest.Succeed(NewInstance(reference) == NewInstance(reference)),
+                                                EqualityTest.Fail(NewInstance(reference) == NewInstance(otherReference)),
+                                                EqualityTest.Fail(NewInstance(reference) == NewDummy<object>()),
+                                                EqualityTest.Fail(NewDummy<object>() == NewInstance(reference)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Inequality_Operator()
+        {
+            var reference = new object();
+            var otherReference = new object();
+
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail((Match<object>)null != null),
+                                                EqualityTest.Succeed(NewInstance(reference) != null),
+                                                EqualityTest.Succeed(null != NewInstance(reference)),
+                                                EqualityTest.Fail(NewInstance(reference) != NewInstance(reference)),
+                                                EqualityTest.Succeed(NewInstance(reference) != NewInstance(otherReference)),
+                                                EqualityTest.Succeed(NewInstance(reference) != NewDummy<object>()),
+                                                EqualityTest.Succeed(NewDummy<object>() != NewInstance(reference)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Type_Specific_Equals_Method()
+        {
+            var reference = new object();
+            var otherReference = new object();
+
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(reference).Equals(null)),
+                                                EqualityTest.Succeed(NewInstance(reference).Equals(NewInstance(reference))),
+                                                EqualityTest.Fail(NewInstance(reference).Equals(NewInstance(otherReference))),
+                                                EqualityTest.Fail(NewInstance(reference).Equals(NewDummy<object>())))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equals_Method()
+        {
+            var reference = new object();
+            var otherReference = new object();
+
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(reference).Equals((object)null)),
+                                                EqualityTest.Succeed(NewInstance(reference).Equals((object)NewInstance(reference))),
+                                                EqualityTest.Fail(NewInstance(reference).Equals((object)NewInstance(otherReference))),
+                                                EqualityTest.Fail(NewInstance(reference).Equals((object)NewDummy<object>())))
+                                      .Succeeds());
+        }
+
+        private static Match<T> NewInstance<T>(T reference)
+            where T : class 
+        {
+            return Match.Same(reference);
+        }
+
+        private static Match<T> NewDummy<T>()
+        {
+            return Match.Custom(new MatchDummy<T>());
         }
     }
 }
