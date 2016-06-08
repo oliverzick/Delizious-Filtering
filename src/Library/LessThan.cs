@@ -22,7 +22,7 @@ namespace Delizious.Filtering
 {
     using System;
 
-    internal sealed class LessThan<T> : IMatch<T>
+    internal sealed class LessThan<T> : IMatch<T>, IEquatable<LessThan<T>>
         where T : IComparable<T>
     {
         private readonly T reference;
@@ -35,6 +35,26 @@ namespace Delizious.Filtering
         public bool Matches(T value)
         {
             return this.reference.CompareTo(value) > 0;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.reference.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as LessThan<T>);
+        }
+
+        public bool Equals(LessThan<T> other)
+        {
+            return ValueSemantics.Determine(other, this.ValueEquals);
+        }
+
+        private bool ValueEquals(LessThan<T> other)
+        {
+            return this.reference.Equals(other.reference);
         }
     }
 }
