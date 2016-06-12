@@ -20,7 +20,7 @@
 
 namespace Delizious.Filtering
 {
-    internal sealed class MatchStub : IMatch<int>
+    internal struct MatchStub : IMatch<int>
     {
         private readonly int expected;
 
