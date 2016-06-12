@@ -133,7 +133,7 @@ namespace Delizious.Filtering
 
         private static Match<int> NewInstance(params Match<int>[] matches)
         {
-            return Match.All<int>(matches);
+            return Match.All(matches);
         }
 
         private static Match<int> NewInstance(params int[] references)
