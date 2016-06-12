@@ -42,6 +42,11 @@ namespace Delizious.Filtering
             return this.items.All(predicate);
         }
 
+        public bool Any(Func<T, bool> predicate)
+        {
+            return this.items.Any(predicate);
+        }
+
         public override int GetHashCode()
         {
             return HashCode.Calculate(this.items.Select(item => item.GetHashCode()));

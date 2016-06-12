@@ -50,7 +50,7 @@ namespace Delizious.Filtering
 
         internal static Match<T> Any(params Match<T>[] matches)
         {
-            return Create(new Any<T>(matches.Select(match => match.match).ToArray()));
+            return Create(Any<T>.Create(matches.Select(match => match.match).ToArray()));
         }
 
         internal static Match<T> Except(params Match<T>[] matches)
