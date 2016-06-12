@@ -1,5 +1,5 @@
-﻿#region Copyright and license
-// <copyright file="All.cs" company="Oliver Zick">
+#region Copyright and license
+// <copyright file="Collection.cs" company="Oliver Zick">
 //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // </copyright>
 // <author>Oliver Zick</author>
@@ -21,44 +21,40 @@
 namespace Delizious.Filtering
 {
     using System;
+    using System.Linq;
 
-    internal sealed class All<T> : IMatch<T>, IEquatable<All<T>>
+    internal sealed class Collection<T> : IEquatable<Collection<T>>
     {
-        private readonly Collection<IMatch<T>> matches;
+        private readonly T[] items;
 
-        private All(Collection<IMatch<T>> matches)
+        private Collection(T[] items)
         {
-            this.matches = matches;
+            this.items = items;
         }
 
-        public static All<T> Create(params IMatch<T>[] matches)
+        public static Collection<T> Create(T[] items)
         {
-            return new All<T>(Collection<IMatch<T>>.Create(matches));
+            return new Collection<T>(items);
         }
 
-        public bool Matches(T value)
+        public bool All(Func<T, bool> predicate)
         {
-            return this.matches.All(match => match.Matches(value));
+            return this.items.All(predicate);
         }
 
         public override int GetHashCode()
         {
-            return this.matches.GetHashCode();
+            return HashCode.Calculate(this.items.Select(item => item.GetHashCode()));
         }
 
-        public override bool Equals(object obj)
-        {
-            return this.Equals(obj as All<T>);
-        }
-
-        public bool Equals(All<T> other)
+        public bool Equals(Collection<T> other)
         {
             return ValueSemantics.Determine(other, this.ValueEquals);
         }
 
-        private bool ValueEquals(All<T> other)
+        private bool ValueEquals(Collection<T> other)
         {
-            return this.matches.Equals(other.matches);
+            return this.items.SequenceEqual(other.items);
         }
     }
 }

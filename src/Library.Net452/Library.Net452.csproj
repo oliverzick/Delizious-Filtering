@@ -48,6 +48,9 @@
     <Compile Include="..\Library\Any.cs">
       <Link>Any.cs</Link>
     </Compile>
+    <Compile Include="..\Library\Collection.cs">
+      <Link>Collection.cs</Link>
+    </Compile>
     <Compile Include="..\Library\Equal.cs">
       <Link>Equal.cs</Link>
     </Compile>
@@ -59,6 +62,9 @@
     </Compile>
     <Compile Include="..\Library\GreaterThanOrEqualTo.cs">
       <Link>GreaterThanOrEqualTo.cs</Link>
+    </Compile>
+    <Compile Include="..\Library\HashCode.cs">
+      <Link>HashCode.cs</Link>
     </Compile>
     <Compile Include="..\Library\IMatch.cs">
       <Link>IMatch.cs</Link>

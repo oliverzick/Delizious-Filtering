@@ -42,10 +42,12 @@
     <Compile Include="All.cs" />
     <Compile Include="Always.cs" />
     <Compile Include="Any.cs" />
+    <Compile Include="Collection.cs" />
     <Compile Include="Equal.cs" />
     <Compile Include="Except.cs" />
     <Compile Include="GreaterThan.cs" />
     <Compile Include="GreaterThanOrEqualTo.cs" />
+    <Compile Include="HashCode.cs" />
     <Compile Include="IMatch.cs" />
     <Compile Include="LessThan.cs" />
     <Compile Include="LessThanOrEqualTo.cs" />
