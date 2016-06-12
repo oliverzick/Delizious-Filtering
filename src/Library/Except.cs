@@ -20,20 +20,45 @@
 
 namespace Delizious.Filtering
 {
-    using System.Linq;
+    using System;
 
-    internal sealed class Except<T> : IMatch<T>
+    internal sealed class Except<T> : IMatch<T>, IEquatable<Except<T>>
     {
-        private readonly IMatch<T>[] matches;
+        private readonly Collection<IMatch<T>> matches;
 
-        public Except(IMatch<T>[] matches)
+        private Except(Collection<IMatch<T>> matches)
         {
             this.matches = matches;
+        }
+
+        public static Except<T> Create(params IMatch<T>[] matches)
+        {
+            return new Except<T>(Collection<IMatch<T>>.Create(matches));
         }
 
         public bool Matches(T value)
         {
             return this.matches.All(match => !match.Matches(value));
+        }
+
+        public override int GetHashCode()
+        {
+            return this.matches.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Except<T>);
+        }
+
+        public bool Equals(Except<T> other)
+        {
+            return ValueSemantics.Determine(other, this.ValueEquals);
+        }
+
+        private bool ValueEquals(Except<T> other)
+        {
+            return this.matches.Equals(other.matches);
         }
     }
 }

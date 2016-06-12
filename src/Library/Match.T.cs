@@ -55,7 +55,7 @@ namespace Delizious.Filtering
 
         internal static Match<T> Except(params Match<T>[] matches)
         {
-            return Create(new Except<T>(matches.Select(match => match.match).ToArray()));
+            return Create(Except<T>.Create(matches.Select(match => match.match).ToArray()));
         }
 
         public static bool operator ==(Match<T> left, Match<T> right)
