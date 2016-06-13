@@ -5,7 +5,7 @@
         <version>1.2.0</version>
         <title>Delizious Filtering</title>
         <authors>Oliver Zick</authors>
-        <licenseUrl>https://raw.githubusercontent.com/oliverzick/Delizious-Filtering/master/LICENSE</licenseUrl>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://github.com/oliverzick/Delizious-Filtering</projectUrl>
         <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
