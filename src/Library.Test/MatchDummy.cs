@@ -1,5 +1,5 @@
-﻿#region Copyright and license
-// <copyright file="NotNull.cs" company="Oliver Zick">
+#region Copyright and license
+// <copyright file="MatchDummy.cs" company="Oliver Zick">
 //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // </copyright>
 // <author>Oliver Zick</author>
@@ -22,27 +22,11 @@ namespace Delizious.Filtering
 {
     using System;
 
-    internal sealed class NotNull<T> : IMatch<T>, IEquatable<NotNull<T>>
-        where T : class
+    internal struct MatchDummy<T> : IMatch<T>
     {
         public bool Matches(T value)
         {
-            return !ReferenceEquals(value, null);
-        }
-
-        public override int GetHashCode()
-        {
-            return 1;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return this.Equals(obj as NotNull<T>);
-        }
-
-        public bool Equals(NotNull<T> other)
-        {
-            return !ReferenceEquals(other, null);
+            throw new InvalidOperationException("Dummy");
         }
     }
 }

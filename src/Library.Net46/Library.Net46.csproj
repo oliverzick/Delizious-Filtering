@@ -49,6 +49,9 @@
     <Compile Include="..\Library\Any.cs">
       <Link>Any.cs</Link>
     </Compile>
+    <Compile Include="..\Library\Collection.cs">
+      <Link>Collection.cs</Link>
+    </Compile>
     <Compile Include="..\Library\Equal.cs">
       <Link>Equal.cs</Link>
     </Compile>
@@ -60,6 +63,9 @@
     </Compile>
     <Compile Include="..\Library\GreaterThanOrEqualTo.cs">
       <Link>GreaterThanOrEqualTo.cs</Link>
+    </Compile>
+    <Compile Include="..\Library\HashCode.cs">
+      <Link>HashCode.cs</Link>
     </Compile>
     <Compile Include="..\Library\IMatch.cs">
       <Link>IMatch.cs</Link>
@@ -96,6 +102,9 @@
     </Compile>
     <Compile Include="..\Library\Same.cs">
       <Link>Same.cs</Link>
+    </Compile>
+    <Compile Include="..\Library\ValueSemantics.cs">
+      <Link>ValueSemantics.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

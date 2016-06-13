@@ -1,5 +1,5 @@
-﻿#region Copyright and license
-// <copyright file="GreaterThan.cs" company="Oliver Zick">
+#region Copyright and license
+// <copyright file="Collection.cs" company="Oliver Zick">
 //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // </copyright>
 // <author>Oliver Zick</author>
@@ -21,40 +21,45 @@
 namespace Delizious.Filtering
 {
     using System;
+    using System.Linq;
 
-    internal sealed class GreaterThan<T> : IMatch<T>, IEquatable<GreaterThan<T>>
-        where T : IComparable<T>
+    internal sealed class Collection<T> : IEquatable<Collection<T>>
     {
-        private readonly T reference;
+        private readonly T[] items;
 
-        public GreaterThan(T reference)
+        private Collection(T[] items)
         {
-            this.reference = reference;
+            this.items = items;
         }
 
-        public bool Matches(T value)
+        public static Collection<T> Create(T[] items)
         {
-            return this.reference.CompareTo(value) < 0;
+            return new Collection<T>(items);
+        }
+
+        public bool All(Func<T, bool> predicate)
+        {
+            return this.items.All(predicate);
+        }
+
+        public bool Any(Func<T, bool> predicate)
+        {
+            return this.items.Any(predicate);
         }
 
         public override int GetHashCode()
         {
-            return this.reference.GetHashCode();
+            return HashCode.Calculate(this.items.Select(item => item.GetHashCode()));
         }
 
-        public override bool Equals(object obj)
-        {
-            return this.Equals(obj as GreaterThan<T>);
-        }
-
-        public bool Equals(GreaterThan<T> other)
+        public bool Equals(Collection<T> other)
         {
             return ValueSemantics.Determine(other, this.ValueEquals);
         }
 
-        private bool ValueEquals(GreaterThan<T> other)
+        private bool ValueEquals(Collection<T> other)
         {
-            return this.reference.Equals(other.reference);
+            return this.items.SequenceEqual(other.items);
         }
     }
 }

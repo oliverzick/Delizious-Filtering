@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// <copyright file="NotNull.cs" company="Oliver Zick">
+// <copyright file="HashCode.cs" company="Oliver Zick">
 //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // </copyright>
 // <author>Oliver Zick</author>
@@ -20,29 +20,22 @@
 
 namespace Delizious.Filtering
 {
-    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    internal sealed class NotNull<T> : IMatch<T>, IEquatable<NotNull<T>>
-        where T : class
+    internal static class HashCode
     {
-        public bool Matches(T value)
+        public static int Calculate(IEnumerable<int> hashCodes)
         {
-            return !ReferenceEquals(value, null);
+            return hashCodes.Aggregate(0, Aggregate);
         }
 
-        public override int GetHashCode()
+        private static int Aggregate(int aggregate, int value)
         {
-            return 1;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return this.Equals(obj as NotNull<T>);
-        }
-
-        public bool Equals(NotNull<T> other)
-        {
-            return !ReferenceEquals(other, null);
+            unchecked
+            {
+                return aggregate ^ (aggregate << 5) + (aggregate >> 2) + value;
+            }
         }
     }
 }

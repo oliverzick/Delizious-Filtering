@@ -396,30 +396,6 @@ namespace Delizious.Filtering
         }
 
         /// <summary>
-        /// Creates a <see cref="Match{T}"/> instance that matches successfully when a value matches none of the specified <paramref name="matches"/>.
-        /// </summary>
-        /// <param name="matches">
-        /// The matches a value is matched with.
-        /// </param>
-        /// <typeparam name="T">
-        /// The type of the value to match.
-        /// </typeparam>
-        /// <returns>
-        /// A new <see cref="Match{T}"/> instance that determines whether a value matches none of the specified <paramref name="matches"/>.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="matches"/> is <c>null</c>.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// <paramref name="matches"/> contain at least one match that is <c>null</c>.
-        /// </exception>
-        [Obsolete("Use Match.Except(...) instead. This method will be removed soon.")]
-        public static Match<T> None<T>(params Match<T>[] matches)
-        {
-            return Except(matches);
-        }
-
-        /// <summary>
         /// Creates a <see cref="Match{T}"/> instance that matches successfully when a value matches according to the specified custom <paramref name="match"/>.
         /// </summary>
         /// <param name="match">

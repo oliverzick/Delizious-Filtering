@@ -20,7 +20,9 @@
 
 namespace Delizious.Filtering
 {
-    internal sealed class Same<T> : IMatch<T>
+    using System;
+
+    internal sealed class Same<T> : IMatch<T>, IEquatable<Same<T>>
         where T : class
     {
         private readonly T reference;
@@ -32,7 +34,27 @@ namespace Delizious.Filtering
 
         public bool Matches(T value)
         {
-            return ReferenceEquals(value, this.reference);
+            return ReferenceEquals(this.reference, value);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.reference.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Same<T>);
+        }
+
+        public bool Equals(Same<T> other)
+        {
+            return ValueSemantics.Determine(other, this.ValueEquals);
+        }
+
+        private bool ValueEquals(Same<T> other)
+        {
+            return ReferenceEquals(this.reference, other.reference);
         }
     }
 }

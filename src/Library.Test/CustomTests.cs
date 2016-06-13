@@ -29,20 +29,82 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Succeeds_When_Custom_Match_Succeeds()
         {
-            Assert.IsTrue(Match.Custom(new MatchStub(1)).Matches(1));
+            Assert.IsTrue(NewInstance(1).Matches(1));
         }
 
         [TestMethod]
         public void Match_Fails_When_Custom_Match_Fails()
         {
-            Assert.IsFalse(Match.Custom(new MatchStub(1)).Matches(0));
+            Assert.IsFalse(NewInstance(1).Matches(0));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throws_Exception_On_Creation_When_Custom_Match_Is_Null()
         {
-            Match.Custom<GenericParameterHelper>(null);
+            Match.Custom<int>(null);
+        }
+
+        [TestMethod]
+        public void Ensure_Equal_Hash_Code_For_Equal_Instances()
+        {
+            Assert.AreEqual(NewInstance(1).GetHashCode(), NewInstance(1).GetHashCode());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Succeed((Match<int>)null == null),
+                                                EqualityTest.Fail(NewInstance(1) == null),
+                                                EqualityTest.Fail(null == NewInstance(1)),
+                                                EqualityTest.Succeed(NewInstance(1) == NewInstance(1)),
+                                                EqualityTest.Fail(NewInstance(1) == NewInstance(0)),
+                                                EqualityTest.Fail(NewInstance(1) == NewDummy()),
+                                                EqualityTest.Fail(NewDummy() == NewInstance(1)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Inequality_Operator()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail((Match<int>)null != null),
+                                                EqualityTest.Succeed(NewInstance(1) != null),
+                                                EqualityTest.Succeed(null != NewInstance(1)),
+                                                EqualityTest.Fail(NewInstance(1) != NewInstance(1)),
+                                                EqualityTest.Succeed(NewInstance(1) != NewInstance(0)),
+                                                EqualityTest.Succeed(NewInstance(1) != NewDummy()),
+                                                EqualityTest.Succeed(NewDummy() != NewInstance(1)))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Type_Specific_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(1).Equals(null)),
+                                                EqualityTest.Succeed(NewInstance(1).Equals(NewInstance(1))),
+                                                EqualityTest.Fail(NewInstance(1).Equals(NewInstance(0))),
+                                                EqualityTest.Fail(NewInstance(1).Equals(NewDummy())))
+                                      .Succeeds());
+        }
+
+        [TestMethod]
+        public void Ensure_Value_Semantics_Using_Equals_Method()
+        {
+            Assert.IsTrue(EqualityTest.Multiple(EqualityTest.Fail(NewInstance(1).Equals((object)null)),
+                                                EqualityTest.Succeed(NewInstance(1).Equals((object)NewInstance(1))),
+                                                EqualityTest.Fail(NewInstance(1).Equals((object)NewInstance(0))),
+                                                EqualityTest.Fail(NewInstance(1).Equals((object)NewDummy())))
+                                      .Succeeds());
+        }
+
+        private static Match<int> NewInstance(int reference)
+        {
+            return Match.Custom(new MatchStub(reference));
+        }
+
+        private static Match<int> NewDummy()
+        {
+            return Match.Custom(new MatchDummy<int>());
         }
     }
 }

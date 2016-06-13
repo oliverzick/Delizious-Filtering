@@ -20,20 +20,45 @@
 
 namespace Delizious.Filtering
 {
-    using System.Linq;
+    using System;
 
-    internal sealed class All<T> : IMatch<T>
+    internal sealed class All<T> : IMatch<T>, IEquatable<All<T>>
     {
-        private readonly IMatch<T>[] matches;
+        private readonly Collection<IMatch<T>> matches;
 
-        public All(IMatch<T>[] matches)
+        private All(Collection<IMatch<T>> matches)
         {
             this.matches = matches;
+        }
+
+        public static All<T> Create(params IMatch<T>[] matches)
+        {
+            return new All<T>(Collection<IMatch<T>>.Create(matches));
         }
 
         public bool Matches(T value)
         {
             return this.matches.All(match => match.Matches(value));
+        }
+
+        public override int GetHashCode()
+        {
+            return this.matches.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as All<T>);
+        }
+
+        public bool Equals(All<T> other)
+        {
+            return ValueSemantics.Determine(other, this.ValueEquals);
+        }
+
+        private bool ValueEquals(All<T> other)
+        {
+            return this.matches.Equals(other.matches);
         }
     }
 }

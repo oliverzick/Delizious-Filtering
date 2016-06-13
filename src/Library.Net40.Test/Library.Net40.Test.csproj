@@ -62,6 +62,9 @@
     <Compile Include="..\Library.Test\CustomTests.cs">
       <Link>CustomTests.cs</Link>
     </Compile>
+    <Compile Include="..\Library.Test\EqualityTest.cs">
+      <Link>EqualityTest.cs</Link>
+    </Compile>
     <Compile Include="..\Library.Test\EqualTests.cs">
       <Link>EqualTests.cs</Link>
     </Compile>
@@ -80,14 +83,14 @@
     <Compile Include="..\Library.Test\LessThanTests.cs">
       <Link>LessThanTests.cs</Link>
     </Compile>
+    <Compile Include="..\Library.Test\MatchDummy.cs">
+      <Link>MatchDummy.cs</Link>
+    </Compile>
     <Compile Include="..\Library.Test\MatchStub.cs">
       <Link>MatchStub.cs</Link>
     </Compile>
     <Compile Include="..\Library.Test\NeverTests.cs">
       <Link>NeverTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Library.Test\NoneTests.cs">
-      <Link>NoneTests.cs</Link>
     </Compile>
     <Compile Include="..\Library.Test\NotEqualTests.cs">
       <Link>NotEqualTests.cs</Link>

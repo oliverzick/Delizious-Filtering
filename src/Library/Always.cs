@@ -20,11 +20,28 @@
 
 namespace Delizious.Filtering
 {
-    internal sealed class Always<T> : IMatch<T>
+    using System;
+
+    internal sealed class Always<T> : IMatch<T>, IEquatable<Always<T>>
     {
         public bool Matches(T value)
         {
             return true;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as Always<T>);
+        }
+
+        public bool Equals(Always<T> other)
+        {
+            return !ReferenceEquals(other, null);
         }
     }
 }

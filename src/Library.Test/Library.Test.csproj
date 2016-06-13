@@ -57,15 +57,16 @@
     <Compile Include="AlwaysTests.cs" />
     <Compile Include="AnyTests.cs" />
     <Compile Include="CustomTests.cs" />
+    <Compile Include="EqualityTest.cs" />
     <Compile Include="EqualTests.cs" />
     <Compile Include="ExceptTests.cs" />
     <Compile Include="GreaterThanOrEqualToTests.cs" />
     <Compile Include="GreaterThanTests.cs" />
     <Compile Include="LessThanOrEqualToTests.cs" />
     <Compile Include="LessThanTests.cs" />
+    <Compile Include="MatchDummy.cs" />
     <Compile Include="MatchStub.cs" />
     <Compile Include="NeverTests.cs" />
-    <Compile Include="NoneTests.cs" />
     <Compile Include="NotEqualTests.cs" />
     <Compile Include="NotNullTests.cs" />
     <Compile Include="NotSameTests.cs" />

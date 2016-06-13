@@ -1,5 +1,5 @@
 ﻿#region Copyright and license
-// <copyright file="NotNull.cs" company="Oliver Zick">
+// <copyright file="ValueSemantics.cs" company="Oliver Zick">
 //     Copyright (c) 2016 Oliver Zick. All rights reserved.
 // </copyright>
 // <author>Oliver Zick</author>
@@ -22,27 +22,17 @@ namespace Delizious.Filtering
 {
     using System;
 
-    internal sealed class NotNull<T> : IMatch<T>, IEquatable<NotNull<T>>
-        where T : class
+    internal static class ValueSemantics
     {
-        public bool Matches(T value)
+        public static bool Determine<T>(T other, Func<T, bool> valueEquals)
+            where T : class
         {
-            return !ReferenceEquals(value, null);
-        }
+            if (ReferenceEquals(other, null))
+            {
+                return false;
+            }
 
-        public override int GetHashCode()
-        {
-            return 1;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return this.Equals(obj as NotNull<T>);
-        }
-
-        public bool Equals(NotNull<T> other)
-        {
-            return !ReferenceEquals(other, null);
+            return valueEquals(other);
         }
     }
 }
