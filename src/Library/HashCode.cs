@@ -23,7 +23,7 @@ namespace Delizious.Filtering
     using System.Collections.Generic;
     using System.Linq;
 
-    internal sealed class HashCode
+    internal static class HashCode
     {
         public static int Calculate(IEnumerable<int> hashCodes)
         {
