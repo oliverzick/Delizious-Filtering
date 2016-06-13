@@ -30,45 +30,39 @@ namespace Delizious.Filtering
         [TestMethod]
         public void Match_Succeeds_When_No_Matches_Are_Given()
         {
-            Assert.IsTrue(Match.Except<int>().Matches(0));
+            Assert.IsTrue(NewInstance().Matches(0));
         }
 
         [TestMethod]
         public void Match_Fails_When_All_Matches_Succeed()
         {
-            Assert.IsFalse(Match.Except(Match.Custom(new MatchStub(1)),
-                                        Match.Custom(new MatchStub(1)),
-                                        Match.Custom(new MatchStub(1))).Matches(1));
+            Assert.IsFalse(NewInstance(1, 1, 1).Matches(1));
         }
 
         [TestMethod]
         public void Match_Fails_When_At_Least_One_Match_Succeeds()
         {
-            Assert.IsFalse(Match.Except(Match.Custom(new MatchStub(0)),
-                                        Match.Custom(new MatchStub(1)),
-                                        Match.Custom(new MatchStub(0))).Matches(1));
+            Assert.IsFalse(NewInstance(0, 1, 0).Matches(1));
         }
 
         [TestMethod]
         public void Match_Succeeds_When_All_Matches_Fail()
         {
-            Assert.IsTrue(Match.Except(Match.Custom(new MatchStub(0)),
-                                       Match.Custom(new MatchStub(0)),
-                                       Match.Custom(new MatchStub(0))).Matches(1));
+            Assert.IsTrue(NewInstance(0, 0, 0).Matches(1));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throws_Exception_On_Creation_When_Matches_Are_Null()
         {
-            Match.Except<int>(null);
+            NewInstance<int>(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Throws_Exception_On_Creation_When_Matches_Contain_At_Least_One_Null_Reference()
         {
-            Match.Except(Match.Always<int>(), null);
+            NewInstance(NewDummy(), null);
         }
 
         [TestMethod]
@@ -131,7 +125,7 @@ namespace Delizious.Filtering
                                       .Succeeds());
         }
 
-        private static Match<int> NewInstance(params Match<int>[] matches)
+        private static Match<T> NewInstance<T>(params Match<T>[] matches)
         {
             return Match.Except(matches);
         }
