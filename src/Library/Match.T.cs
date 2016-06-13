@@ -58,11 +58,35 @@ namespace Delizious.Filtering
             return Create(Except<T>.Create(matches.Select(match => match.match).ToArray()));
         }
 
+        /// <summary>
+        /// Determines whether two specified <see cref="Match{T}"/> instances have the same value.
+        /// </summary>
+        /// <param name="left">
+        /// The left match to compare, or <c>null</c>.
+        /// </param>
+        /// <param name="right">
+        /// The right match to compare, or <c>null</c>.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the value of <paramref name="left"/> is the same as the value of <paramref name="right"/>; otherwise, <c>false</c>.
+        /// </returns>
         public static bool operator ==(Match<T> left, Match<T> right)
         {
             return Equals(left, right);
         }
 
+        /// <summary>
+        /// Determines whether two specified <see cref="Match{T}"/> instances have different values.
+        /// </summary>
+        /// <param name="left">
+        /// The left match to compare, or <c>null</c>.
+        /// </param>
+        /// <param name="right">
+        /// The right match to compare, or <c>null</c>.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the value of <paramref name="left"/> is different from the value of <paramref name="right"/>; otherwise, <c>false</c>.
+        /// </returns>
         public static bool operator !=(Match<T> left, Match<T> right)
         {
             return !(left == right);
@@ -82,16 +106,40 @@ namespace Delizious.Filtering
             return this.match.Matches(value);
         }
 
+        /// <summary>
+        /// Returns the hash code for this match.
+        /// </summary>
+        /// <returns>
+        /// A 32-bit signed integer hash code.
+        /// </returns>
         public override int GetHashCode()
         {
             return this.match.GetHashCode();
         }
 
+        /// <summary>
+        /// Determines whether this instance and a specified object, which must also be a <see cref="Match{T}"/> instance, have the same value.
+        /// </summary>
+        /// <param name="obj">
+        /// The object to compare to this instance.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if <paramref name="obj"/> is a <see cref="Match{T}"/> and its value is the same as this instance; otherwise, <c>false</c>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             return this.Equals(obj as Match<T>);
         }
 
+        /// <summary>
+        /// Determines whether this instance and another specified <see cref="Match{T}"/> instance have the same value.
+        /// </summary>
+        /// <param name="other">
+        /// The match to compare to this instance.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the value of <paramref name="other"/> is the same as this instance; otherwise, <c>false</c>.
+        /// </returns>
         public bool Equals(Match<T> other)
         {
             return ValueSemantics.Determine(other, this.ValueEquals);
