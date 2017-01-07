@@ -9,8 +9,8 @@
         <projectUrl>https://github.com/oliverzick/Delizious-Filtering</projectUrl>
         <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A flexible and easy to use .NET library that simplifies matching of values and filtering.</description>
-        <summary>A flexible and easy to use .NET library that simplifies matching of values and filtering.</summary>
+        <description>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</description>
+        <summary>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</summary>
         <releaseNotes>https://raw.githubusercontent.com/oliverzick/Delizious-Filtering/master/src/Changelog.txt</releaseNotes>
         <copyright>Copyright (c) 2016-2017 Oliver Zick. All rights reserved.</copyright>
         <language>en-US</language>

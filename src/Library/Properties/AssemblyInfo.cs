@@ -22,7 +22,7 @@ using System;
 using System.Reflection;
 
 [assembly: AssemblyTitle("Delizious Filtering Library")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A flexible and easy to use .NET library that simplifies matching of values as well as filtering.")]
 [assembly: AssemblyConfiguration("Portable")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Delizious Toolkit")]
