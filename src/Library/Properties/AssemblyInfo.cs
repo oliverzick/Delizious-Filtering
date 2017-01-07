@@ -20,21 +20,17 @@
 
 using System;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Delizious Filtering Library")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyDescription("A flexible and easy to use .NET library that simplifies matching of values as well as filtering.")]
+[assembly: AssemblyConfiguration("Portable")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Delizious Toolkit")]
-[assembly: AssemblyCopyright("Copyright © 2016 Oliver Zick. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2016-2017 Oliver Zick. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: CLSCompliant(true)]
 
-[assembly: ComVisible(false)]
-
-[assembly: Guid("02e55793-3c02-45d2-a727-9f6e36e9930a")]
-
-[assembly: AssemblyVersion("1.2.0")]
+[assembly: AssemblyVersion("2.0.0")]
+[assembly: AssemblyInformationalVersion("2.0.0")]

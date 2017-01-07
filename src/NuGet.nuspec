@@ -2,32 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Delizious-Filtering</id>
-        <version>1.2.0</version>
+        <version>2.0.0</version>
         <title>Delizious Filtering</title>
         <authors>Oliver Zick</authors>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://github.com/oliverzick/Delizious-Filtering</projectUrl>
         <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A flexible and easy to use .NET library that simplifies matching of values and filtering.</description>
-        <summary>A flexible and easy to use .NET library that simplifies matching of values and filtering.</summary>
+        <description>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</description>
+        <summary>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</summary>
         <releaseNotes>https://raw.githubusercontent.com/oliverzick/Delizious-Filtering/master/src/Changelog.txt</releaseNotes>
-        <copyright>Copyright (c) 2016 Oliver Zick. All rights reserved.</copyright>
+        <copyright>Copyright (c) 2016-2017 Oliver Zick. All rights reserved.</copyright>
         <language>en-US</language>
         <tags>.net match matching filter filtering simple delizious</tags>
     </metadata>
     <files>
-        <file src="bin\Release\net40\Delizious.Filtering.dll" target="lib\net40\Delizious.Filtering.dll" />
-        <file src="bin\Release\net40\Delizious.Filtering.xml" target="lib\net40\Delizious.Filtering.xml" />
-        <file src="bin\Release\net45\Delizious.Filtering.dll" target="lib\net45\Delizious.Filtering.dll" />
-        <file src="bin\Release\net45\Delizious.Filtering.xml" target="lib\net45\Delizious.Filtering.xml" />
-        <file src="bin\Release\net451\Delizious.Filtering.dll" target="lib\net451\Delizious.Filtering.dll" />
-        <file src="bin\Release\net451\Delizious.Filtering.xml" target="lib\net451\Delizious.Filtering.xml" />
-        <file src="bin\Release\net452\Delizious.Filtering.dll" target="lib\net452\Delizious.Filtering.dll" />
-        <file src="bin\Release\net452\Delizious.Filtering.xml" target="lib\net452\Delizious.Filtering.xml" />
-        <file src="bin\Release\net46\Delizious.Filtering.dll" target="lib\net46\Delizious.Filtering.dll" />
-        <file src="bin\Release\net46\Delizious.Filtering.xml" target="lib\net46\Delizious.Filtering.xml" />
-        <file src="bin\Release\net461\Delizious.Filtering.dll" target="lib\net461\Delizious.Filtering.dll" />
-        <file src="bin\Release\net461\Delizious.Filtering.xml" target="lib\net461\Delizious.Filtering.xml" />
+        <file src="bin\Release\Delizious.Filtering.dll" target="lib\portable-net4+sl50+netcore45+wpa81+wp8\Delizious.Filtering.dll" />
+        <file src="bin\Release\Delizious.Filtering.xml" target="lib\portable-net4+sl50+netcore45+wpa81+wp8\Delizious.Filtering.xml" />
     </files>
 </package>

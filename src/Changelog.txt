@@ -1,5 +1,9 @@
 Delizious Filtering Library
-Copyright © 2016 Oliver Zick. All rights reserved.
+Copyright © 2016-2017 Oliver Zick. All rights reserved.
+
+Version 2.0.0:
+
+	- Issue #25: Provide portable library to support multiple platforms
 
 Version 1.2.0:
 
