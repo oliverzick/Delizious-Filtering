@@ -1,6 +1,10 @@
 Delizious Filtering Library
 Copyright © 2016-2017 Oliver Zick. All rights reserved.
 
+Version 2.1.0:
+
+	- Issue #26: Target multiple platforms by providing .NET Standard 1.0 library along .NET Framework 4.0 specific library
+
 Version 2.0.0:
 
 	- Issue #25: Provide portable library to support multiple platforms

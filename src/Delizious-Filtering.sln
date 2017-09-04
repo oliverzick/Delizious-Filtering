@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{58AD174C-FB8B-4735-AA38-511FCF5FC8BD}"
 EndProject
@@ -14,7 +14,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A057AFC9-6B3A-4B9A-923F-AE968580961C}"
 	ProjectSection(SolutionItems) = preProject
 		Changelog.txt = Changelog.txt
-		NuGet.nuspec = NuGet.nuspec
 	EndProjectSection
 EndProject
 Global
@@ -38,5 +37,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{02E55793-3C02-45D2-A727-9F6E36E9930A} = {58AD174C-FB8B-4735-AA38-511FCF5FC8BD}
 		{B3E2C6F1-8C68-4558-BAC1-9FB1E3508B68} = {BCC03039-62C6-4D36-BB24-707F2316CB36}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64583676-E0A3-4FE5-8215-D3644DD2E0FC}
 	EndGlobalSection
 EndGlobal
