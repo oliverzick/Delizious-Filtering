@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;net40</TargetFrameworks>
+	<TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Delizious.Filtering</AssemblyName>
     <RootNamespace>Delizious.Filtering</RootNamespace>
     <Version>2.1.0</Version>
