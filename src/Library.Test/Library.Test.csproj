@@ -6,7 +6,6 @@
 		<AssemblyName>Delizious.Filtering.Test</AssemblyName>
 		
 		<IsPackable>false</IsPackable>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
