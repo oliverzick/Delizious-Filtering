@@ -1,12 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+	<Import Project="..\Global.targets" />
+
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
 		<AssemblyName>Delizious.Filtering.Test</AssemblyName>
-		<RootNamespace>Delizious.Filtering</RootNamespace>
-		<Version>2.1.0</Version>
-		<Authors>Oliver Zick</Authors>
-		<Copyright>Copyright (c) 2016-2017 Oliver Zick. All rights reserved.</Copyright>
 		
 		<IsPackable>false</IsPackable>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
