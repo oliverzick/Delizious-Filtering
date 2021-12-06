@@ -1,0 +1,17 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>Delizious.Filtering</RootNamespace>
+		<Version>2.1.0</Version>
+		<Authors>Oliver Zick</Authors>
+		<Copyright>Copyright (c) 2016-2017 Oliver Zick. All rights reserved.</Copyright>
+		<Description>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</Description>
+		<PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/oliverzick/Delizious-Filtering</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/oliverzick/Delizious-Filtering</RepositoryUrl>
+		<PackageTags>.net match matching filter filtering simple delizious</PackageTags>
+		<Product>Delizious Filtering</Product>
+	</PropertyGroup>
+	
+</Project>
