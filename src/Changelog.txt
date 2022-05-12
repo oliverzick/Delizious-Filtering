@@ -1,5 +1,9 @@
 Delizious Filtering Library
-Copyright © 2016-2017 Oliver Zick. All rights reserved.
+Copyright © 2016-2022 Oliver Zick. All rights reserved.
+
+Version 3.0.0:
+
+	- Issue #27: Upgrade to .NET 5
 
 Version 2.1.0:
 
