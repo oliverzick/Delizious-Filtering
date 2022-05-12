@@ -3,44 +3,44 @@ Copyright © 2016-2022 Oliver Zick. All rights reserved.
 
 Version 3.0.0:
 
-	- Issue #27: Upgrade to .NET 5
+	- #27: Upgrade to .NET 5
 
 Version 2.1.0:
 
-	- Issue #26: Target multiple platforms by providing .NET Standard 1.0 library along .NET Framework 4.0 specific library
+	- #26: Target multiple platforms by providing .NET Standard 1.0 library along .NET Framework 4.0 specific library
 
 Version 2.0.0:
 
-	- Issue #25: Provide portable library to support multiple platforms
+	- #25: Provide portable library to support multiple platforms
 
 Version 1.2.0:
 
-	- Issue #24: Implement immutability with value semantics for matches
+	- #24: Implement immutability with value semantics for matches
 
 Version 1.1.0:
 
-	- Issue #22: Rename match 'None' to 'Except'; mark 'None' as obsolete
-	- Issue #23: Enable custom matches
+	- #22: Rename match 'None' to 'Except'; mark 'None' as obsolete
+	- #23: Enable custom matches
 
 Version 1.0.0:
 
-	- Issue #1: Enable match that determines whether an instance is same as a given instance
-	- Issue #2: Enable match that determines whether an instance matches any given match
-	- Issue #3: Enable match that determines whether an instance equals a given instance
-	- Issue #4: Enable match that determines whether an instance is greater than a given instance
-	- Issue #5: Enable match that determines whether an instance is less than a given instance
-	- Issue #6: Enable match that determines whether an instance is null
-	- Issue #7: Enable match that matches always
-	- Issue #8: Enable match that matches never
-	- Issue #9: Enable match that determines whether an instance is greater than or equal to a given instance
-	- Issue #10: Enable match that determines whether an instance is less than or equal to a given instance
-	- Issue #12: Enable match that determines whether an instance matches all given matches
-	- Issue #13: Enable match that determines whether an instance is not null
-	- Issue #14: Enable match that determines whether an instance is not same as a given instance
-	- Issue #15: Enable match that determines whether an instance does not equal a given instance
-	- Issue #16: Enable match that determines whether an instance matches none given matches
-	- Issue #17: Support .NET Framework 4.6
-	- Issue #18: Support .NET Framework 4.5.2
-	- Issue #19: Support .NET Framework 4.5.1
-	- Issue #20: Support .NET Framework 4.5
-	- Issue #21: Support .NET Framework 4
+	- #1: Enable match that determines whether an instance is same as a given instance
+	- #2: Enable match that determines whether an instance matches any given match
+	- #3: Enable match that determines whether an instance equals a given instance
+	- #4: Enable match that determines whether an instance is greater than a given instance
+	- #5: Enable match that determines whether an instance is less than a given instance
+	- #6: Enable match that determines whether an instance is null
+	- #7: Enable match that matches always
+	- #8: Enable match that matches never
+	- #9: Enable match that determines whether an instance is greater than or equal to a given instance
+	- #10: Enable match that determines whether an instance is less than or equal to a given instance
+	- #12: Enable match that determines whether an instance matches all given matches
+	- #13: Enable match that determines whether an instance is not null
+	- #14: Enable match that determines whether an instance is not same as a given instance
+	- #15: Enable match that determines whether an instance does not equal a given instance
+	- #16: Enable match that determines whether an instance matches none given matches
+	- #17: Support .NET Framework 4.6
+	- #18: Support .NET Framework 4.5.2
+	- #19: Support .NET Framework 4.5.1
+	- #20: Support .NET Framework 4.5
+	- #21: Support .NET Framework 4
