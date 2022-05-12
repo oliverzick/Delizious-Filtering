@@ -1,39 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;net40</TargetFrameworks>
+	<Import Project="..\Global.targets" />
+
+	<PropertyGroup>
     <AssemblyName>Delizious.Filtering</AssemblyName>
-    <RootNamespace>Delizious.Filtering</RootNamespace>
-    <Version>2.1.0</Version>
-    <Authors>Oliver Zick</Authors>
     <PackageId>Delizious-Filtering</PackageId>
-    <Copyright>Copyright (c) 2016-2017 Oliver Zick. All rights reserved.</Copyright>
-    <Description>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</Description>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/oliverzick/Delizious-Filtering</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/oliverzick/Delizious-Filtering</RepositoryUrl>
-    <PackageTags>.net match matching filter filtering simple delizious</PackageTags>
-    <Product>Delizious Filtering</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.0|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard1.0\Delizious.Filtering.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.0|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.0\Delizious.Filtering.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
-    <DocumentationFile>bin\Debug\net40\Delizious.Filtering.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
-    <DocumentationFile>bin\Release\net40\Delizious.Filtering.xml</DocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
 </Project>
