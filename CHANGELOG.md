@@ -1,4 +1,4 @@
-Delizious Filtering Library
+## Delizious Filtering Library
 Copyright © 2016-2022 Oliver Zick. All rights reserved.
 
 ### Version 4.0.0:
