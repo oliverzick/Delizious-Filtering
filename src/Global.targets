@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<RootNamespace>Delizious.Filtering</RootNamespace>
-		<AssemblyVersion>4.0.0.1</AssemblyVersion>
-		<FileVersion>4.0.0.1</FileVersion>
+		<AssemblyVersion>4.0.0.2</AssemblyVersion>
+		<FileVersion>4.0.0.2</FileVersion>
 		<Version>4.0.0</Version>
 		<Authors>Oliver Zick</Authors>
 		<Copyright>Copyright (c) 2016-2022 Oliver Zick. All rights reserved.</Copyright>
