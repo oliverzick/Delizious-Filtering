@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <RootNamespace>Delizious.Filtering</RootNamespace>
-    <AssemblyVersion>4.0.0.2</AssemblyVersion>
-    <FileVersion>4.0.0.2</FileVersion>
-    <Version>4.0.0</Version>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
+    <Version>5.0.0</Version>
     <Authors>Oliver Zick</Authors>
-    <Copyright>Copyright (c) 2016-2022 Oliver Zick. All rights reserved.</Copyright>
+    <Copyright>Copyright (c) 2016-2024 Oliver Zick. All rights reserved.</Copyright>
     <Description>A flexible and easy to use .NET library that simplifies matching of values as well as filtering.</Description>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/oliverzick/Delizious-Filtering</PackageProjectUrl>
