@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\Global.targets" />
+  <Import Project="..\Global.targets" />
 
-	<PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Delizious.Filtering</AssemblyName>
     <PackageId>Delizious-Filtering</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
