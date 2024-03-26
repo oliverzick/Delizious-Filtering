@@ -1,6 +1,9 @@
 ## Delizious Filtering Library
 Copyright © 2016-2022 Oliver Zick. All rights reserved.
 
+### Version 5.0.0:
+* #37: Migrate to .NET Standard 2.0
+
 ### Version 4.0.0:
 * #30: Upgrade to .NET 6
 
